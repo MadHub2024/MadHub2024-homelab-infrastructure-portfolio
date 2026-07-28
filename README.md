@@ -1,4 +1,4 @@
-# Denny Brathwaite — Homelab Infrastructure Portfolio
+## Denny Brathwaite — Homelab Infrastructure Portfolio
 
 
 ## About Me
@@ -106,6 +106,11 @@ SX3008F Switch
 ├── VLAN 30 IoT
 │
 └── VLAN 20 Media
+
+
+
+
+
 
 
 ## DNS Flow
