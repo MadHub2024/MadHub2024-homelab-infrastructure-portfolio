@@ -164,71 +164,71 @@ LibreNMS
 
 ## Dell Hybrid Architecture 
 
-Dell OptiPlex 7060
-├── Native Services
-│   ├── Technitium DNS
-│   ├── Docker Engine
-│   ├── containerd
-│   ├── OpenPostings API
-│   ├── OpenPostings Web
-│   ├── Tailscale
-│   ├── SNMP
-│   ├── SSH
-│   ├── nftables
-│   ├── lm-sensors
-│   └── smartmontools
-└── Docker Services
-    ├── Vaultwarden
-    ├── LibreNMS
-    │   ├── LibreNMS application
-    │   ├── Dispatcher
-    │   ├── Redis
-    │   └── MariaDB
-    ├── Home Assistant
-    ├── Portainer
-    ├── ESPHome
-    ├── Matter Server
-    ├── cAdvisor
-    └── Node Exporter
+   Dell OptiPlex 7060
+    ├── Native Services
+    │   ├── Technitium DNS
+    │   ├── Docker Engine
+    │   ├── containerd
+    │   ├── OpenPostings API
+    │   ├── OpenPostings Web
+    │   ├── Tailscale
+    │   ├── SNMP
+    │   ├── SSH
+    │   ├── nftables
+    │   ├── lm-sensors
+    │   └── smartmontools
+    └── Docker Services
+        ├── Vaultwarden
+        ├── LibreNMS
+        │   ├── LibreNMS application
+        │   ├── Dispatcher
+        │   ├── Redis
+        │   └── MariaDB
+        ├── Home Assistant
+        ├── Portainer
+        ├── ESPHome
+        ├── Matter Server
+        ├── cAdvisor
+        └── Node Exporter
 
 
 ## Lenovo Hybrid Architecture 
 
-Lenovo ThinkCentre M73
-├── Native Services
-│   ├── AdGuard Home
-│   ├── Caddy
-│   ├── Cloudflared
-│   ├── Docker Engine
-│   ├── containerd
-│   ├── Homebridge
-│   ├── Grafana
-│   ├── Prometheus
-│   ├── Prometheus Blackbox Exporter
-│   ├── Prometheus Node Exporter
-│   ├── AdGuard Exporter
-│   ├── Technitium Exporter
-│   ├── Glances
-│   ├── Ollama
-│   ├── n8n
-│   ├── PM2 Process Manager
-│   ├── MTA-STS
-│   ├── Tailscale
-│   ├── SNMP
-│   ├── SSH
-│   ├── UFW
-│   ├── Chrony
-│   ├── smartmontools
-│   ├── lm-sensors
-│   └── zram Swap
-└── Docker Services
-    ├── Homepage
-    ├── Open WebUI
-    ├── Portainer
-    ├── Uptime Kuma
-    ├── WatchYourLAN
-    ├── Glances
-    └── cAdvisor
+    Lenovo ThinkCentre M73
+    ├── Native Services
+    │   ├── AdGuard Home
+    │   ├── Caddy
+    │   ├── Cloudflared
+    │   ├── Docker Engine
+    │   ├── containerd
+    │   ├── Homebridge
+    │   ├── Grafana
+    │   ├── Prometheus
+    │   ├── Prometheus Blackbox Exporter
+    │   ├── Prometheus Node Exporter
+    │   ├── AdGuard Exporter
+    │   ├── Technitium Exporter
+    │   ├── Glances
+    │   ├── Ollama
+    │   ├── n8n
+    │   ├── PM2 Process Manager
+    │   ├── MTA-STS
+    │   ├── Tailscale
+    │   ├── SNMP
+    │   ├── SSH
+    │   ├── UFW
+    │   ├── Chrony
+    │   ├── smartmontools
+    │   ├── lm-sensors
+    │   └── zram Swap
+    └── Docker Services
+        ├── Homepage
+        ├── Open WebUI
+        ├── Portainer
+        ├── Uptime Kuma
+        ├── WatchYourLAN
+        ├── Glances
+        └── cAdvisor
 
 
 ## Security
