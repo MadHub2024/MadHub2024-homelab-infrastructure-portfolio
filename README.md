@@ -1,12 +1,50 @@
 # Denny Brathwaite — Homelab Infrastructure Portfolio
 
+
+## About Me
+
+I'm an aspiring Infrastructure and Network Administrator with a passion for designing secure, enterprise-style home lab environments.
+
+This repository documents real-world projects involving:
+
+- Multi-VLAN network design
+- Enterprise DNS architecture
+- Reverse proxy infrastructure
+- Docker container orchestration
+- Infrastructure documentation
+- Security hardening
+
+Every project reflects production-style engineering practices while protecting sensitive information through sanitization.
+
 This repository documents the design, operation, security, and troubleshooting of an enterprise-style homelab.
 
 ## Live site
 
+## Badges
+
+![Cloudflare Pages](https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange)
+
+![Docker](https://img.shields.io/badge/Docker-20+-2496ED)
+
+![TP-Link Omada](https://img.shields.io/badge/Network-TP--Link_Omada-00B8E6)
+
+![Technitium DNS](https://img.shields.io/badge/DNS-Technitium-success)
+
+![AdGuard Home](https://img.shields.io/badge/Filtering-AdGuard_Home-green)
+
+![Vaultwarden](https://img.shields.io/badge/Password_Manager-Vaultwarden-red)
+
+![License-MIT](https://img.shields.io/badge/License-MIT-blue)
+
+
 Designed for deployment to Cloudflare Pages at:
 
 `portfolio.dbservicessolutions.org`
+
+
+
+
+
 
 ## Portfolio highlights
 
@@ -17,6 +55,9 @@ Designed for deployment to Cloudflare Pages at:
 - Monitoring with LibreNMS, Prometheus, Grafana, exporters, and Uptime Kuma
 - Secure remote administration using SSH and Tailscale
 - Bash automation for backup, validation, recovery, and readiness testing
+
+
+
 
 ## Repository structure
 
@@ -32,6 +73,7 @@ Designed for deployment to Cloudflare Pages at:
 └── DEPLOYMENT.md
 ```
 
+
 ## Local preview
 
 From the repository directory:
@@ -42,12 +84,111 @@ python3 -m http.server 8080
 
 Open `http://127.0.0.1:8080`.
 
+
+
+## Network Architecture 
+Internet
+      │
+Comcast Business
+      │
+ER7412 Router
+      │
+───────────────
+SX3008F Switch
+───────────────
+│
+├── VLAN 60 Management
+│
+├── VLAN 50 Workstations
+│
+├── VLAN 40 Servers
+│
+├── VLAN 30 IoT
+│
+└── VLAN 20 Media
+
+
+## DNS Flow
+
+
+Clients
+
+↓
+
+Technitium DNS
+
+↓
+
+AdGuard Home
+
+↓
+
+AdGuard Private DNS
+
+↓
+
+Internet
+
+
+## Reverse Proxy
+
+
+Internet
+
+↓
+
+Cloudflare
+
+↓
+
+Caddy
+
+↓
+
+Portainer
+
+Homepage
+
+Vaultwarden
+
+Uptime Kuma
+
+Home Assistant
+
+LibreNMS
+
+
+## Docker Diagram
+
+Dell Server
+
+Docker
+
+├── Portainer
+
+├── Homepage
+
+├── Uptime Kuma
+
+├── Vaultwarden
+
+├── ESPHome
+
+├── Home Assistant
+
+├── LibreNMS
+
+├── Node Exporter
+
+└── CAdvisor
+
+
+
+
+
 ## Security
 
 All examples are sanitized. Never publish passwords, API keys, private keys, tokens, session cookies, public IP allocations, or production secrets.
-
-
-## Security
 
 This repository has been sanitized for public release.
 
