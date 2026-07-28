@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Denny Brathwaite's network administration, Linux, Docker, DNS, cybersecurity, and homelab infrastructure portfolio.">
+  <title>Denny Brathwaite | Infrastructure Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Denny Brathwaite home">
+        <span class="brand-mark">DB</span>
+        <span>Denny Brathwaite</span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a>
+        <a href="#homelab">Homelab</a>
+        <a href="#projects">Case Studies</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Network Administration · Linux · Infrastructure Security</p>
+          <h1>I build, secure, and troubleshoot enterprise-style infrastructure.</h1>
+          <p class="hero-copy">
+            I am an IT support and infrastructure professional with hands-on experience
+            administering Linux systems, segmented networks, Docker services, DNS,
+            reverse proxies, monitoring, and secure remote access.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="#projects">View case studies</a>
+            <a class="button secondary" href="resume/Denny_Brathwaite_Resume.txt" download>Download résumé</a>
+          </div>
+          <ul class="quick-facts" aria-label="Professional details">
+            <li>Duluth, Georgia</li>
+            <li>Authorized to work in the U.S.</li>
+            <li>Open to onsite, hybrid, remote, and field roles</li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel" aria-label="Portfolio highlights">
+          <h2>Infrastructure at a glance</h2>
+          <div class="metric-grid">
+            <div><strong>7+</strong><span>VLANs</span></div>
+            <div><strong>20+</strong><span>Self-hosted services</span></div>
+            <div><strong>2</strong><span>Linux servers</span></div>
+            <div><strong>10 Gb</strong><span>Backbone</span></div>
+          </div>
+          <p>
+            Core platforms include TP-Link Omada, Technitium DNS, AdGuard Home,
+            Docker Compose, Caddy, Tailscale, LibreNMS, Prometheus, and Grafana.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container two-column">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Operations discipline applied to infrastructure engineering</h2>
+        </div>
+        <div class="prose">
+          <p>
+            I bring nearly 20 years of customer-facing and operations experience from
+            banking, financial services, airline services, and business operations.
+            I now apply that same discipline to IT support, network administration,
+            Linux systems, and cybersecurity.
+          </p>
+          <p>
+            My homelab functions as a production-style learning environment where I
+            design architectures, deploy services, document changes, investigate
+            incidents, validate backups, and improve reliability over time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="homelab">
+      <div class="container">
+        <p class="eyebrow">Homelab architecture</p>
+        <h2>Segmented, monitored, and securely published</h2>
+
+        <div class="architecture" role="img" aria-label="Text diagram showing Comcast Business connected to an Omada router and 10 gigabit switch, with management, server, workstation, IoT, media, printer, and guest VLANs.">
+          <div class="node primary-node">Comcast Business</div>
+          <div class="connector">↓</div>
+          <div class="node">TP-Link ER7412 Router</div>
+          <div class="connector">↓</div>
+          <div class="node">SX3008F 10 Gb Backbone</div>
+          <div class="connector branch">↓</div>
+          <div class="vlan-grid">
+            <div class="node small">Management</div>
+            <div class="node small">Servers</div>
+            <div class="node small">Workstations</div>
+            <div class="node small">IoT</div>
+            <div class="node small">Media</div>
+            <div class="node small">Printers</div>
+            <div class="node small">Guests</div>
+          </div>
+        </div>
+
+        <div class="card-grid three">
+          <article class="card">
+            <h3>Lenovo Linux server</h3>
+            <p>Native infrastructure services positioned close to the network edge.</p>
+            <ul>
+              <li>AdGuard Home</li>
+              <li>Homebridge</li>
+              <li>Tailscale</li>
+              <li>Linux service administration</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Dell Docker host</h3>
+            <p>Container platform for network, monitoring, automation, and security services.</p>
+            <ul>
+              <li>Technitium DNS</li>
+              <li>Vaultwarden</li>
+              <li>LibreNMS and exporters</li>
+              <li>Home Assistant and ESPHome</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Centralized access</h3>
+            <p>Secure internal service publishing and remote administration.</p>
+            <ul>
+              <li>Caddy reverse proxy</li>
+              <li>Internal PKI and HTTPS</li>
+              <li>Tailscale remote access</li>
+              <li>Cloudflare domain management</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="eyebrow">Case studies</p>
+        <h2>Real infrastructure work, documented end to end</h2>
+
+        <div class="card-grid">
+          <article class="project-card">
+            <span class="project-number">01</span>
+            <h3>Multi-VLAN network segmentation</h3>
+            <p>
+              Designed an Omada-based network separating management, servers,
+              workstations, IoT, media, printers, and guest traffic.
+            </p>
+            <p class="outcome"><strong>Outcome:</strong> Least-privilege access while preserving DNS, printing, mDNS, and automation workflows.</p>
+            <a href="projects/network-segmentation.html">Read case study →</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">02</span>
+            <h3>Layered DNS architecture</h3>
+            <p>
+              Implemented Technitium DNS as the primary LAN resolver, with
+              AdGuard Home providing filtering and encrypted upstream resolution.
+            </p>
+            <p class="outcome"><strong>Outcome:</strong> Centralized internal zones, consistent service discovery, and network-wide filtering.</p>
+            <a href="projects/dns-architecture.html">Read case study →</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">03</span>
+            <h3>Vaultwarden recovery and hardening</h3>
+            <p>
+              Recovered a missing container, verified persistent data, checked
+              SQLite integrity, recreated the service, and hardened the admin token.
+            </p>
+            <p class="outcome"><strong>Outcome:</strong> Restored service with verified backups, HTTP readiness checks, TLS validation, and secure credentials.</p>
+            <a href="projects/vaultwarden-recovery.html">Read case study →</a>
+          </article>
+
+          <article class="project-card">
+            <span class="project-number">04</span>
+            <h3>Monitoring and observability</h3>
+            <p>
+              Combined LibreNMS, Prometheus, Grafana, cAdvisor, Node Exporter,
+              Blackbox Exporter, and Uptime Kuma.
+            </p>
+            <p class="outcome"><strong>Outcome:</strong> Layered visibility into hosts, containers, network devices, service health, and uptime.</p>
+            <a href="projects/monitoring-stack.html">Read case study →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="skills">
+      <div class="container">
+        <p class="eyebrow">Technical capabilities</p>
+        <h2>Tools used in design, operations, and troubleshooting</h2>
+
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>Networking</h3>
+            <p>TCP/IP · IPv4/IPv6 · DNS · DHCP · VLANs · Inter-VLAN routing · ACLs · NAT · VPN · SSH · SNMP · mDNS</p>
+          </div>
+          <div class="skill-group">
+            <h3>Systems</h3>
+            <p>Linux · Debian · Parrot OS · Windows · macOS · systemd · permissions · storage · logging · remote support</p>
+          </div>
+          <div class="skill-group">
+            <h3>Infrastructure</h3>
+            <p>Docker · Docker Compose · Portainer · Caddy · Technitium DNS · AdGuard Home · Tailscale · Cloudflare · Omada</p>
+          </div>
+          <div class="skill-group">
+            <h3>Monitoring and security</h3>
+            <p>LibreNMS · Prometheus · Grafana · Uptime Kuma · Wireshark · tcpdump · Splunk · nmap · log analysis</p>
+          </div>
+          <div class="skill-group">
+            <h3>Automation and diagnostics</h3>
+            <p>Bash · Git · curl · dig · openssl · journalctl · Docker inspection · backup and rollback workflows</p>
+          </div>
+          <div class="skill-group">
+            <h3>Certifications</h3>
+            <p>Google Cybersecurity Professional Certificate · CompTIA Network+ in progress · Technical Support Fundamentals</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let's discuss infrastructure, support, or network operations.</h2>
+          <p>I am interested in IT support, network support, NOC, junior systems administration, and infrastructure support opportunities.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:denali@dbservicessolutions.org">denali@dbservicessolutions.org</a>
+          <a href="https://www.linkedin.com/in/denny-b-a0abb71b0/" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/MadHub2024" rel="noreferrer">GitHub: MadHub2024</a>
+          <a href="resume/Denny_Brathwaite_Resume.txt" download>Download résumé</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Denny Brathwaite. Built as a static site for GitHub and Cloudflare Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+services:
+  example-service:
+    image: vendor/example:latest
+    container_name: example-service
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - ./data:/data
+    environment:
+      DOMAIN: "https://example.internal"
+      ADMIN_TOKEN: "REDACTED_ARGON2_HASH"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 5

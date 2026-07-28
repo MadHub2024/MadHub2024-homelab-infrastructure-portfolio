@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitoring and Observability Stack | Denny Brathwaite</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
+      <a href="../index.html#projects">All case studies</a>
+    </nav>
+  </header>
+  <main>
+    <section class="case-hero">
+      <div class="container case-body">
+        <p class="eyebrow">Case study 04</p>
+        <h1>Monitoring and Observability Stack</h1>
+        <p class="hero-copy">Combining multiple tools to monitor network devices, Linux hosts, containers, endpoints, and service availability.</p>
+        <div class="case-meta"><span class="tag">LibreNMS</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Uptime Kuma</span><span class="tag">cAdvisor</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <article class="container case-body">
+        <h2>Objective</h2>
+<p>No single monitoring platform provides the best view of every layer. The goal was to combine infrastructure metrics, network discovery, container utilization, and user-visible service checks.</p>
+<h2>Tool responsibilities</h2>
+<ul><li><strong>LibreNMS:</strong> network devices, SNMP, discovery, and inventory.</li><li><strong>Prometheus:</strong> time-series metrics and exporter collection.</li><li><strong>Grafana:</strong> dashboards and visualization.</li><li><strong>cAdvisor:</strong> container resource metrics.</li><li><strong>Node Exporter:</strong> Linux host metrics.</li><li><strong>Blackbox Exporter:</strong> endpoint probing.</li><li><strong>Uptime Kuma:</strong> service-oriented uptime and availability checks.</li></ul>
+<h2>Troubleshooting work</h2>
+<p>Monitoring implementation required Docker network validation, port checks, container log analysis, exporter configuration, and SNMP testing across VLAN boundaries.</p>
+<h2>Result</h2>
+<p>The layered design makes it possible to distinguish a host resource problem from a container issue, a network device failure, or an application endpoint outage.</p>
+
+        <a class="back-link" href="../index.html#projects">← Back to portfolio</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

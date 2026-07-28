@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vaultwarden Recovery and Hardening | Denny Brathwaite</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
+      <a href="../index.html#projects">All case studies</a>
+    </nav>
+  </header>
+  <main>
+    <section class="case-hero">
+      <div class="container case-body">
+        <p class="eyebrow">Case study 03</p>
+        <h1>Vaultwarden Recovery and Hardening</h1>
+        <p class="hero-copy">Recovering a missing container safely while preserving encrypted vault data and improving the update workflow.</p>
+        <div class="case-meta"><span class="tag">Docker Compose</span><span class="tag">SQLite</span><span class="tag">Caddy</span><span class="tag">TLS</span><span class="tag">Bash</span><span class="tag">Argon2</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <article class="container case-body">
+        <h2>Incident</h2>
+<p>The Vaultwarden container was absent after an update attempt, while the image and Docker network still existed. The priority was to restore the service without risking the persistent password database.</p>
+<h2>Data validation</h2>
+<p>I located the Compose project and confirmed the bind mount:</p>
+<pre>/home/denalidennyb/vaultwarden/data → /data</pre>
+<p>Before deployment, I created a timestamped backup and ran SQLite integrity validation:</p>
+<pre>sudo cp -a data "data-backup-$(date +%Y%m%d-%H%M%S)"
+sudo sqlite3 data/db.sqlite3 'PRAGMA integrity_check;'</pre>
+<h2>Service recovery</h2>
+<p>I validated the Compose configuration, recreated the container, monitored application logs, confirmed Docker health, and tested the local HTTP endpoint before testing the Caddy hostname.</p>
+<h2>Security hardening</h2>
+<p>The update also replaced a plaintext administrative token with an Argon2 PHC hash. A Bash workflow was built to back up the Compose file, validate syntax, recreate the service, test HTTP readiness, detect plaintext-token warnings, and preserve rollback information.</p>
+<h2>Root-cause reasoning</h2>
+<p>An initial script treated Docker's delayed health transition as an application failure even though Rocket was already serving HTTP. The readiness test was redesigned to check the actual service endpoint for HTTP 200 instead of relying solely on the container health timestamp.</p>
+<h2>Result</h2>
+<p>Vaultwarden returned to service with an intact database, verified backups, secure administration, valid internal TLS, and a repeatable update procedure.</p>
+
+        <a class="back-link" href="../index.html#projects">← Back to portfolio</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

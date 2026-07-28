@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-VLAN Network Segmentation | Denny Brathwaite</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
+      <a href="../index.html#projects">All case studies</a>
+    </nav>
+  </header>
+  <main>
+    <section class="case-hero">
+      <div class="container case-body">
+        <p class="eyebrow">Case study 01</p>
+        <h1>Multi-VLAN Network Segmentation</h1>
+        <p class="hero-copy">Designing a secure Omada network that isolates device classes while maintaining the services each group legitimately needs.</p>
+        <div class="case-meta"><span class="tag">Omada</span><span class="tag">VLANs</span><span class="tag">ACLs</span><span class="tag">mDNS</span><span class="tag">Routing</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <article class="container case-body">
+        <h2>Challenge</h2>
+<p>The environment included servers, workstations, IoT devices, media devices, printers, guests, and management equipment. A flat network would create unnecessary trust and a larger attack surface.</p>
+<h2>Design</h2>
+<p>I created dedicated network segments for management, servers, workstations, IoT, media, printers, and guests. Inter-VLAN access is denied by default and allowed only where a documented service dependency exists.</p>
+<pre>Management VLAN  → network infrastructure
+Server VLAN      → Linux and Docker services
+Workstation VLAN → trusted user endpoints
+IoT VLAN         → constrained smart devices
+Media VLAN       → TVs and streaming devices
+Printer VLAN     → restricted printing services
+Guest VLAN       → internet-only access</pre>
+<h2>Implementation approach</h2>
+<ul><li>Created explicit DNS rules to the internal resolver.</li><li>Allowed narrowly scoped access to Hubitat, Home Assistant, and printing services.</li><li>Used mDNS/Bonjour bridging only where discovery was required.</li><li>Maintained a default-deny inter-VLAN posture.</li></ul>
+<h2>Operational lessons</h2>
+<p>Segmentation is not complete when VLANs exist; it becomes useful when dependencies are mapped, ACL behavior is tested from the client side, and exceptions are documented. Service discovery protocols require special attention because broadcast traffic does not naturally cross VLAN boundaries.</p>
+<h2>Result</h2>
+<p>The final design limits lateral movement, reduces unnecessary trust, and preserves required user experiences such as AirPrint, automation, DNS, and remote administration.</p>
+
+        <a class="back-link" href="../index.html#projects">← Back to portfolio</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

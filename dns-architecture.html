@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layered DNS Architecture | Denny Brathwaite</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="../index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
+      <a href="../index.html#projects">All case studies</a>
+    </nav>
+  </header>
+  <main>
+    <section class="case-hero">
+      <div class="container case-body">
+        <p class="eyebrow">Case study 02</p>
+        <h1>Layered DNS Architecture</h1>
+        <p class="hero-copy">Building internal authoritative DNS, local service discovery, and network-wide filtering with clear separation of responsibilities.</p>
+        <div class="case-meta"><span class="tag">Technitium DNS</span><span class="tag">AdGuard Home</span><span class="tag">Split DNS</span><span class="tag">DoH</span><span class="tag">Troubleshooting</span></div>
+      </div>
+    </section>
+    <section class="section">
+      <article class="container case-body">
+        <h2>Challenge</h2>
+<p>The network needed reliable internal names across multiple zones, filtering for all VLANs, and predictable troubleshooting. Ad hoc rewrites alone did not provide the authoritative structure required for a growing self-hosted environment.</p>
+<h2>Architecture</h2>
+<pre>Clients
+  ↓
+Technitium DNS (primary LAN resolver)
+  ↓
+AdGuard Home (filtering)
+  ↓
+Encrypted upstream resolver</pre>
+<p>Technitium owns internal zones and service records. AdGuard Home applies filtering and forwards external requests to encrypted upstream resolvers.</p>
+<h2>Internal zones</h2>
+<p>The environment uses multiple local namespaces, including <code>.home</code>, <code>.dbservices</code>, and an internal view of <code>dbservicessolutions.org</code>. These zones provide consistent names for Caddy-published applications and direct infrastructure access.</p>
+<h2>Troubleshooting</h2>
+<ul><li>Used <code>dig</code> against each resolver to isolate failures.</li><li>Validated authoritative zones and record ownership.</li><li>Investigated SERVFAIL responses and DNSSEC-related behavior.</li><li>Aligned host and container DNS behavior with the intended resolution path.</li></ul>
+<h2>Result</h2>
+<p>The network now has centralized naming, filtering, and clear fault boundaries. Internal service discovery remains available without exposing private applications to public DNS.</p>
+
+        <a class="back-link" href="../index.html#projects">← Back to portfolio</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,128 @@
+DENNY BRATHWAITE
+
+Duluth, GA
+Authorized to Work in the U.S. (Green Card)
+770-524-2083
+dennybrathwaite481@gmail.com
+LinkedIn: linkedin.com/in/denny-b-a0abb71b0
+
+PROFESSIONAL SUMMARY
+
+IT Support professional with hands-on experience administering Linux
+systems, enterprise-style networking, and self-hosted infrastructure.
+Experienced troubleshooting hardware, operating systems, DNS, VPN, VLAN,
+Docker, network connectivity, and user support across multi-server
+environments.
+
+Brings nearly 20 years of customer-facing experience spanning banking,
+credit unions, financial services, airline services, and operations,
+with a proven record of resolving customer issues, communicating
+technical information clearly, and delivering exceptional service.
+Google Cybersecurity Professional Certificate holder currently pursuing
+CompTIA Network+, seeking an IT Help Desk, Desktop Support, or Network
+Support role.
+
+Available for up to 100% travel.
+
+TECHNICAL SKILLS
+
+Operating Systems
+
+-   Linux (Debian, Parrot OS, Fedora, CachyOS)
+-   Windows
+-   macOS
+
+Networking
+
+-   TCP/IP, IPv4/IPv6, DNS, DHCP, VLANs, Inter-VLAN Routing, ACLs, NAT,
+    VPN, SSH, SNMP, Wi-Fi, Router Configuration, Network Diagnostics
+
+Infrastructure
+
+-   Docker, Portainer, Technitium DNS, AdGuard Home, Caddy Reverse
+    Proxy, Tailscale, Cloudflare, TP-Link Omada
+
+IT Support
+
+-   Remote Support, Incident Management, Ticket Management, End User
+    Support, Technical Troubleshooting, Password Resets, Account
+    Provisioning (Basic)
+
+Monitoring & Security
+
+-   Wireshark, Splunk, Linux CLI, Log Analysis, Incident Documentation,
+    Basic Vulnerability Assessment
+
+Productivity
+
+-   Microsoft 365, Outlook, Excel, Technical Documentation
+
+HOME LAB / INFRASTRUCTURE PROJECTS
+
+-   Designed and administered a multi-VLAN TP-Link Omada network
+    supporting 7+ VLANs.
+-   Administer multiple Linux systems running Debian and Parrot OS.
+-   Deployed and managed 10+ Docker containers including Portainer,
+    Uptime Kuma, Home Assistant, Vaultwarden, LibreNMS, ESPHome,
+    Homepage, and Technitium DNS.
+-   Built centralized DNS using Technitium DNS and AdGuard Home.
+-   Configured secure remote administration using SSH, Tailscale VPN,
+    Cloudflare, and Caddy.
+-   Diagnosed networking issues using Wireshark, tcpdump, dig,
+    journalctl, and nmap.
+-   Troubleshot DNS, routing, VPN connectivity, Docker networking, Linux
+    services, and firewall issues.
+-   Maintained infrastructure documentation and troubleshooting
+    procedures.
+
+SECURITY LABS
+
+-   Google Cybersecurity Professional Certificate Labs
+-   Splunk SIEM Investigations
+-   Wireshark Packet Analysis
+-   TryHackMe
+-   Hack The Box
+-   Linux Administration
+-   Security Monitoring
+-   Incident Response Fundamentals
+
+PROFESSIONAL EXPERIENCE
+
+Operations & Customer Support Specialist
+
+Sidco LLC | 2025–Present
+
+-   Troubleshoot customer and operational issues.
+-   Document incidents, resolutions, and procedures.
+-   Coordinate issue resolution across multiple teams.
+-   Deliver high-quality customer support.
+
+Banking, Financial Services & Customer Operations
+
+Multiple Organizations | 2005–2025
+
+-   Delivered exceptional customer service across banking, credit union,
+    financial services, airline services, and operations.
+-   Resolved high-volume customer issues while maintaining
+    professionalism and accuracy.
+-   Collaborated across departments to resolve customer and operational
+    issues.
+-   Protected confidential financial and customer information.
+
+CERTIFICATIONS
+
+-   Google Cybersecurity Professional Certificate
+-   CompTIA Network+ (In Progress)
+-   Technical Support Fundamentals – Coursera
+
+EDUCATION
+
+Associate Degree – Healthcare Office Administration
+Samuel Jackman Institute of Technology
+
+ADDITIONAL INFORMATION
+
+-   Authorized to work in the United States (Green Card)
+-   Available immediately
+-   Available for up to 100% travel
+-   Open to onsite, hybrid, remote, and field service opportunities
