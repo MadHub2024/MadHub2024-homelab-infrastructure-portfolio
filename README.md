@@ -45,3 +45,22 @@ Open `http://127.0.0.1:8080`.
 ## Security
 
 All examples are sanitized. Never publish passwords, API keys, private keys, tokens, session cookies, public IP allocations, or production secrets.
+
+
+## Security
+
+This repository has been sanitized for public release.
+
+The following information has been intentionally removed or replaced:
+
+- Public IP addresses
+- Internal network addresses
+- Authentication credentials
+- API tokens
+- TLS certificates
+- Private keys
+- Vaultwarden secrets
+- Cloudflare credentials
+- Tailscale authentication keys
+
+The architecture, configuration methodology, and deployment processes remain technically accurate while protecting production infrastructure.
