@@ -87,6 +87,8 @@ Open `http://127.0.0.1:8080`.
 
 
 ## Network Architecture 
+
+'''text
 Internet
       │
 Comcast Business
@@ -106,10 +108,7 @@ SX3008F Switch
 ├── VLAN 30 IoT
 │
 └── VLAN 20 Media
-
-
-
-
+'''
 
 
 
