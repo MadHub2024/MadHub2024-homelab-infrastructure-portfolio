@@ -164,7 +164,7 @@ LibreNMS
 
 ## Dell Hybrid Architecture 
 
-   Dell OptiPlex 7060
+    Dell OptiPlex 7060
     ├── Native Services
     │   ├── Technitium DNS
     │   ├── Docker Engine
