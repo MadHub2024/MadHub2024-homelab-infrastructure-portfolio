@@ -58,7 +58,6 @@ Designed for deployment to Cloudflare Pages at:
 
 
 
-
 ## Portfolio highlights
 
 - Multi-VLAN TP-Link Omada network with least-privilege ACLs
@@ -102,26 +101,9 @@ Open `http://127.0.0.1:8080`.
 ## Network Architecture 
 
 
-    Internet
-          │
-    Comcast Business
-          │
-    ER7412 Router
-          │
-    ───────────────
-    SX3008F Switch
-    ───────────────
-    │
-    ├── VLAN 60 Management
-    │
-    ├── VLAN 50 Workstations
-    │
-    ├── VLAN 40 Servers
-    │
-    ├── VLAN 30 IoT
-    │
-    └── VLAN 20 Media
+![Network architecture diagram](assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)
 
+Diagram: Internet → Comcast Business → ER7412 Router → SX3008F Switch → VLAN 60 Management, VLAN 50 Workstations, VLAN 40 Servers, VLAN 30 IoT, VLAN 20 Media
 
 
 
@@ -177,6 +159,7 @@ LibreNMS
 
 ## Dell Hybrid Architecture 
 
+
     Dell OptiPlex 7060
     ├── Native Services
     │   ├── Technitium DNS
@@ -206,6 +189,7 @@ LibreNMS
 
 
 ## Lenovo Hybrid Architecture 
+
 
     Lenovo ThinkCentre M73
     ├── Native Services
