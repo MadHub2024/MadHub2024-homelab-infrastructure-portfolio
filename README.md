@@ -80,8 +80,7 @@ Designed for deployment to Cloudflare Pages at:
 
 ## Repository structure
 
-```text
-.
+ ```text
 ├── index.html
 ├── styles.css
 ├── script.js
@@ -90,18 +89,18 @@ Designed for deployment to Cloudflare Pages at:
 ├── configs/
 ├── resume/
 └── DEPLOYMENT.md
-```
+ ```
 
 
 ## Local preview
 
 From the repository directory:
 
-```bash
-python3 -m http.server 8080
-```
+ ```bash
+ python3 -m http.server 8080
+ ```
 
-Open `http://127.0.0.1:8080`.
+ Open `http://127.0.0.1:8080`.
 
 
 
