@@ -40,7 +40,7 @@
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-left">
         <h2 id="hero-heading">I build, secure, and troubleshoot enterprise-style infrastructure.</h2>
-        <p class="lead">I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitori[...]</p>
+        <p class="lead">I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitoring, and observability.</p>
 
         <div class="cta">
           <a class="btn" href="#case-studies">View case studies</a>
@@ -70,8 +70,8 @@
     <section id="about" class="section card">
       <h2>About</h2>
       <h3>Operations discipline applied to infrastructure engineering</h3>
-      <p>I bring nearly 20 years of customer-facing and operations experience from banking, financial services, airline services, and business operations. I now apply that same discipline to IT su[...]</p>
-      <p>My homelab functions as a production-style learning environment where I design architectures, deploy services, document changes, investigate incidents, validate backups, and improve relia[...]</p>
+      <p>I bring nearly 20 years of customer-facing and operations experience from banking, financial services, airline services, and business operations. I now apply that same discipline to IT support and infrastructure operations.</p>
+      <p>My homelab functions as a production-style learning environment where I design architectures, deploy services, document changes, investigate incidents, validate backups, and improve reliability.</p>
     </section>
 
     <section id="architecture" class="section card">
@@ -85,7 +85,7 @@
             <li>Comcast Business</li>
             <li>TP-Link ER7412 Router</li>
             <li>SX3008F 10 Gb Backbone</li>
-            <li>VLANs: Labs (70) Management (60), Workstation (50), Servers (50),  Printers (30), IoT and Media (20), Guest (10)</li>
+            <li>VLANs: Labs (70) Management (60), Workstation (50), Servers (50), Printers (30), IoT and Media (20), Guest (10)</li>
             </ol>
         </div>
 
@@ -204,7 +204,7 @@
 
     <section id="contact" class="section card contact">
       <h2>Contact</h2>
-      <p>Let's discuss infrastructure, support, or network operations. I'm interested in IT support, network support, NOC, junior systems administration, and infrastructure support opportunities.[...]</p>
+      <p>Let's discuss infrastructure, support, or network operations. I'm interested in IT support, network support, NOC, junior systems administration, and infrastructure support opportunities. Feel free to reach out.</p>
 
       <ul>
         <li>Email: <a href="mailto:denali@dbservicessolutions.org">denali@dbservicessolutions.org</a></li>
@@ -233,7 +233,7 @@
 
       <h3>Certifications</h3>
       <div class="cert-badges">
-        <a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cyberse[...]" />
+        <a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google" /></a>
         <img alt="Google Cybersecurity Specialization" src="https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google" />
         <img alt="Network Administration" src="https://img.shields.io/badge/Network_Administration-Completed-green" />
         <img alt="Computer Maintenance" src="https://img.shields.io/badge/Computer_Maintenance-Completed-green" />
@@ -243,7 +243,7 @@
       <p>I'm an aspiring Infrastructure and Network Administrator with a passion for designing secure, enterprise-style home lab environments.</p>
 
       <h3>Repository</h3>
-      <p>You can view the full source and documentation on GitHub: <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/tree/main" target="_blank" rel="noopener">Bro[...]
+      <p>You can view the full source and documentation on GitHub: <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/tree/main" target="_blank" rel="noopener">Browse source on GitHub</a></p>
 
       <h3>Portfolio highlights</h3>
       <ul>
@@ -270,10 +270,10 @@
       </code></pre>
 
       <h3>Local preview</h3>
-      <p>From the repository directory:</p>
+      <p>From the repository directory, run:</p>
       <pre><code>python3 -m http.server 8080
-
-# Open http://127.0.0.1:8080</code></pre>
+</code></pre>
+      <p>Open: <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a></p>
 
       <h3>Network Architecture</h3>
       <figure class="diagram-figure">
@@ -311,104 +311,9 @@
 
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p>© <span id="year"></span> Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets. <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio" [...]</p>
+      <p>© <span id="year"></span> Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets. <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio" target="_blank" rel="noopener">Repository</a></p>
     </div>
   </footer>
-
-  <script>
-    // Small UI helpers: set current year and mobile nav toggle
-    document.addEventListener('DOMContentLoaded', function(){
-      var y = new Date().getFullYear();
-      var el = document.getElementById('year'); if(el) el.textContent = y;
-
-      var navToggle = document.getElementById('navToggle');
-      var nav = document.getElementById('siteNav');
-      if(navToggle && nav){
-        navToggle.addEventListener('click', function(){
-          var open = nav.classList.toggle('open');
-          navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-
-      // Image modal / popout behavior with focus trap and download
-      var trigger = document.getElementById('diagramTrigger');
-      var modal = document.getElementById('imageModal');
-      var modalImage = document.getElementById('modalImage');
-      var origImage = document.getElementById('networkDiagram');
-      var closeBtn = modal && modal.querySelector('.modal-close');
-      var backdrop = modal && modal.querySelector('.modal-backdrop');
-      var downloadLink = modal && modal.querySelector('#modalDownload');
-      var mainEl = document.getElementById('main');
-
-      var previouslyFocused = null;
-
-      function getFocusable(el){
-        if(!el) return [];
-        return Array.prototype.slice.call(el.querySelectorAll('a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'))
-          .filter(function(node){ return node.offsetWidth > 0 || node.offsetHeight > 0 || node === document.activeElement; });
-      }
-
-      function openModal(){
-        if(!modal || !origImage) return;
-        previouslyFocused = document.activeElement;
-        modalImage.src = origImage.src;
-        modalImage.alt = origImage.alt || 'Network architecture diagram';
-        // set download href to original image
-        if(downloadLink) { downloadLink.href = origImage.src; }
-        modal.setAttribute('aria-hidden', 'false');
-        // hide main content from assistive tech while modal open
-        if(mainEl) mainEl.setAttribute('aria-hidden', 'true');
-        // prevent background scroll
-        document.body.style.overflow = 'hidden';
-        // focus first focusable element inside modal
-        var focusables = getFocusable(modal);
-        if(focusables.length) focusables[0].focus();
-        // listen for Escape and Tab
-        document.addEventListener('keydown', keyHandler);
-      }
-
-      function closeModal(){
-        if(!modal) return;
-        modal.setAttribute('aria-hidden', 'true');
-        if(mainEl) mainEl.removeAttribute('aria-hidden');
-        document.body.style.overflow = '';
-        modalImage.src = '';
-        // restore focus
-        if(previouslyFocused && previouslyFocused.focus) previouslyFocused.focus();
-        document.removeEventListener('keydown', keyHandler);
-      }
-
-      function keyHandler(e){
-        if(e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
-        if(e.key === 'Tab'){
-          // focus trap: keep focus within modal
-          var focusables = getFocusable(modal);
-          if(focusables.length === 0) { e.preventDefault(); return; }
-          var idx = focusables.indexOf(document.activeElement);
-          if(e.shiftKey){
-            if(idx === 0 || document.activeElement === modal){
-              focusables[focusables.length -1].focus();
-              e.preventDefault();
-            }
-          } else {
-            if(idx === focusables.length -1){
-              focusables[0].focus();
-              e.preventDefault();
-            }
-          }
-        }
-      }
-
-      if(trigger){
-        trigger.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
-      }
-      if(closeBtn) closeBtn.addEventListener('click', closeModal);
-      if(backdrop) backdrop.addEventListener('click', closeModal);
-      // clicking the modal image also closes (convenience)
-      if(modalImage) modalImage.addEventListener('click', closeModal);
-
-    });
-  </script>
 
   <script src="script.js" defer></script>
 </body>
