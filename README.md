@@ -113,6 +113,10 @@ Open `http://127.0.0.1:8080`.
   </a>
 </p>
 
+**Interactive diagram**
+
+Click the architecture image on the portfolio page to open a larger, readable popout (press Esc or click the X/backdrop to close). This makes the PNG text legible on smaller screens.
+
 (Click the diagram to open the full-resolution image in a new tab.)
 
 
