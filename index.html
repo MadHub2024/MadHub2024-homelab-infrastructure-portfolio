@@ -40,7 +40,7 @@
     <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-left">
         <h2 id="hero-heading">I build, secure, and troubleshoot enterprise-style infrastructure.</h2>
-        <p class="lead">I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitoring, and security hardening. This site highlights production-style homelab projects and documentation.</p>
+        <p class="lead">I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitori[...]</p>
 
         <div class="cta">
           <a class="btn" href="#case-studies">View case studies</a>
@@ -70,8 +70,8 @@
     <section id="about" class="section card">
       <h2>About</h2>
       <h3>Operations discipline applied to infrastructure engineering</h3>
-      <p>I bring nearly 20 years of customer-facing and operations experience from banking, financial services, airline services, and business operations. I now apply that same discipline to IT support and infrastructure engineering.</p>
-      <p>My homelab functions as a production-style learning environment where I design architectures, deploy services, document changes, investigate incidents, validate backups, and improve reliability.</p>
+      <p>I bring nearly 20 years of customer-facing and operations experience from banking, financial services, airline services, and business operations. I now apply that same discipline to IT su[...]</p>
+      <p>My homelab functions as a production-style learning environment where I design architectures, deploy services, document changes, investigate incidents, validate backups, and improve relia[...]</p>
     </section>
 
     <section id="architecture" class="section card">
@@ -204,7 +204,7 @@
 
     <section id="contact" class="section card contact">
       <h2>Contact</h2>
-      <p>Let's discuss infrastructure, support, or network operations. I'm interested in IT support, network support, NOC, junior systems administration, and infrastructure support opportunities.</p>
+      <p>Let's discuss infrastructure, support, or network operations. I'm interested in IT support, network support, NOC, junior systems administration, and infrastructure support opportunities.[...]</p>
 
       <ul>
         <li>Email: <a href="mailto:denali@dbservicessolutions.org">denali@dbservicessolutions.org</a></li>
@@ -233,7 +233,7 @@
 
       <h3>Certifications</h3>
       <div class="cert-badges">
-        <a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cybersecuirty-Professional_Certificate-blue?logo=google" /></a>
+        <a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cyberse[...]" />
         <img alt="Google Cybersecurity Specialization" src="https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google" />
         <img alt="Network Administration" src="https://img.shields.io/badge/Network_Administration-Completed-green" />
         <img alt="Computer Maintenance" src="https://img.shields.io/badge/Computer_Maintenance-Completed-green" />
@@ -243,7 +243,7 @@
       <p>I'm an aspiring Infrastructure and Network Administrator with a passion for designing secure, enterprise-style home lab environments.</p>
 
       <h3>Repository</h3>
-      <p>You can view the full source and documentation on GitHub: <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/tree/main" target="_blank" rel="noopener">Browse source on GitHub</a></p>
+      <p>You can view the full source and documentation on GitHub: <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/tree/main" target="_blank" rel="noopener">Bro[...]
 
       <h3>Portfolio highlights</h3>
       <ul>
@@ -276,7 +276,12 @@
 # Open http://127.0.0.1:8080</code></pre>
 
       <h3>Network Architecture</h3>
-      <p><img alt="Network architecture diagram" src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" /></p>
+      <figure class="diagram-figure">
+        <a href="#" id="diagramTrigger" aria-describedby="diagramHelp">
+          <img id="networkDiagram" class="network-diagram" alt="Network architecture diagram" src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" />
+        </a>
+        <figcaption id="diagramHelp" class="visually-hidden">Click the image to open a larger, readable view in a popout.</figcaption>
+      </figure>
 
       <h3>DNS Flow</h3>
       <p>Clients → Technitium DNS → AdGuard Home → AdGuard Private DNS → Internet</p>
@@ -291,9 +296,19 @@
 
   </main>
 
+  <!-- Image modal / popout -->
+  <div id="imageModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-action="close"></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" aria-label="Close dialog">&times;</button>
+      <img id="modalImage" alt="Network architecture diagram" />
+      <p id="modalTitle" class="modal-caption">Network architecture diagram — click or press Esc to close</p>
+    </div>
+  </div>
+
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p>© <span id="year"></span> Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets. <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio" target="_blank" rel="noopener">Repository</a></p>
+      <p>© <span id="year"></span> Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets. <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio" [...]</p>
     </div>
   </footer>
 
@@ -311,6 +326,45 @@
           navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
       }
+
+      // Image modal / popout behavior
+      var trigger = document.getElementById('diagramTrigger');
+      var modal = document.getElementById('imageModal');
+      var modalImage = document.getElementById('modalImage');
+      var origImage = document.getElementById('networkDiagram');
+      var closeBtn = modal && modal.querySelector('.modal-close');
+      var backdrop = modal && modal.querySelector('.modal-backdrop');
+
+      function openModal(){
+        if(!modal || !origImage) return;
+        modalImage.src = origImage.src;
+        modalImage.alt = origImage.alt || 'Network architecture diagram';
+        modal.setAttribute('aria-hidden', 'false');
+        // prevent background scroll
+        document.body.style.overflow = 'hidden';
+        if(closeBtn) closeBtn.focus();
+        // listen for Escape
+        document.addEventListener('keydown', escHandler);
+      }
+
+      function closeModal(){
+        if(!modal) return;
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        modalImage.src = '';
+        document.removeEventListener('keydown', escHandler);
+      }
+
+      function escHandler(e){ if(e.key === 'Escape') closeModal(); }
+
+      if(trigger){
+        trigger.addEventListener('click', function(e){ e.preventDefault(); openModal(); });
+      }
+      if(closeBtn) closeBtn.addEventListener('click', closeModal);
+      if(backdrop) backdrop.addEventListener('click', closeModal);
+      // clicking the modal image also closes (convenience)
+      if(modalImage) modalImage.addEventListener('click', closeModal);
+
     });
   </script>
 
