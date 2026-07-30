@@ -108,7 +108,21 @@ body{
 .readme-section h2,
 .readme-section h3{color:var(--text);margin-top:0}
 .badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
-.badges img{height:26px;border-radius:6px;display:inline-block}
+.badges img{height:28px;border-radius:6px;display:inline-block}
+
+/* Certificate badges block (from README certificates) */
+.cert-badges{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
+.cert-badges img{height:28px;border-radius:6px;display:inline-block}
+
+/* Live site link highlight */
+.live-site a{
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+}
+.live-site a:hover{text-decoration:underline}
+
+/* Monospace / pre blocks */
 .repo-structure, .diagram, .readme-section pre{
   background:linear-gradient(180deg, rgba(2,6,23,0.5), rgba(2,6,23,0.35));
   padding:12px;
@@ -124,4 +138,5 @@ body{
 @media (max-width:920px){
   .badges img{height:22px}
   .readme-section{padding:16px}
+  .cert-badges img{height:22px}
 }
