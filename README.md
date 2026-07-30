@@ -101,7 +101,7 @@ Open `http://127.0.0.1:8080`.
 ## Network Architecture 
 
 
-![Network architecture diagram](assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)
+[![Network architecture diagram](https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/50d80195d688ace9631cabb2e94a142fd0d29aff/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)](https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/blob/50d80195d688ace9631cabb2e94a142fd0d29aff/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)
 
 Diagram: Internet → Comcast Business → ER7412 Router → SX3008F Switch → VLAN 60 Management, VLAN 50 Workstations, VLAN 40 Servers, VLAN 30 IoT, VLAN 20 Media
 
@@ -215,7 +215,7 @@ LibreNMS
     │   ├── SSH
     │   ├── UFW
     │   ├── Chrony
-    │   ├── smartmontools
+    │   ├── smartmonttools
     │   ├── lm-sensors
     │   └── zram Swap
     └── Docker Services
