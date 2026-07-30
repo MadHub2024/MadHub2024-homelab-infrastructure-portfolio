@@ -27,7 +27,7 @@ body{
   padding:24px;
 }
 
-/* Skip link */
+/* Skip link (improved focus contrast) */
 .skip-link{
   position: absolute;
   left:-999px;
@@ -36,8 +36,15 @@ body{
   color:#000;
   padding:8px 12px;
   z-index:100;
+  border-radius:6px;
+  box-shadow:0 6px 18px rgba(2,6,23,0.4);
 }
-.skip-link:focus{left:12px;top:12px;border-radius:6px}
+.skip-link:focus{
+  left:12px;
+  top:12px;
+  outline:3px solid rgba(45,212,191,0.25);
+  outline-offset:3px;
+}
 
 /* Header */
 .site-header{border-bottom:1px solid rgba(255,255,255,0.04);background:transparent}
@@ -108,11 +115,12 @@ body{
 .readme-section h2,
 .readme-section h3{color:var(--text);margin-top:0}
 .badges{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
-.badges img{height:28px;border-radius:6px;display:inline-block}
+.badges img{height:28px;border-radius:6px;display:inline-block;width:auto;object-fit:contain;transition:transform .12s ease}
+.badges img:hover{transform:translateY(-3px)}
 
 /* Certificate badges block (from README certificates) */
 .cert-badges{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
-.cert-badges img{height:28px;border-radius:6px;display:inline-block}
+.cert-badges img{height:28px;border-radius:6px;display:inline-block;width:auto;object-fit:contain}
 
 /* Live site link highlight */
 .live-site a{
@@ -168,11 +176,13 @@ body{
   width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
 }
 
-/* Modal / popout styles */
+/* Modal / popout styles
+   Use display:none by default to prevent accidental focus/tabbing of hidden modal in some browsers.
+*/
 .modal{
   position:fixed;
   inset:0;
-  display:flex;
+  display:none; /* hidden by default to avoid focus leakage */
   align-items:center;
   justify-content:center;
   z-index:9999;
@@ -182,6 +192,7 @@ body{
   pointer-events:none;
 }
 .modal[aria-hidden="false"]{
+  display:flex;
   visibility:visible;
   opacity:1;
   pointer-events:auto;
