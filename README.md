@@ -108,9 +108,12 @@ Open `http://127.0.0.1:8080`.
 ## Network Architecture 
 
 <p align="center">
-  <img src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" alt="Network architecture diagram" style="max-width:100%;width:900px;">
+  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener noreferrer">
+    <img src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" alt="Network architecture diagram" style="max-width:100%;height:auto;width:1200px;">
+  </a>
 </p>
 
+(Click the diagram to open the full-resolution image in a new tab.)
 
 
 ## DNS Flow
@@ -178,7 +181,7 @@ LibreNMS
     │   │   ├── SSH
     │   ├── nftables
     │   ├── lm-sensors
-    │   └── smartmontools
+    │   └── smartmonttools
     └── Docker Services
         ├── Vaultwarden
         ├── LibreNMS
@@ -205,11 +208,11 @@ LibreNMS
     │   ├── Docker Engine
     │   ├── containerd
     │   ├── Homebridge
-    │   ├��─ Grafana
+    │   ├── Grafana
     │   ├── Prometheus
     │   ├── Prometheus Blackbox Exporter
     │   ├── Prometheus Node Exporter
-    │   │   ├── AdGuard Exporter
+    │   ├── AdGuard Exporter
     │   ├── Technitium Exporter
     │   ├── Glances
     │   ├── Ollama
