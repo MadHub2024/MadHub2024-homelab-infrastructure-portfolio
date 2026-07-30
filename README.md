@@ -42,6 +42,19 @@ Designed for deployment to Cloudflare Pages at:
 `portfolio.dbservicessolutions.org`
 
 
+## Certifications
+
+[![Google Cybersecurity Professional Certificate](https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google)](certificates.html)
+![Google Cybersecurity Specialization](https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google)
+![Network Administration](https://img.shields.io/badge/Network_Administration-Completed-green)
+![Computer Maintenance](https://img.shields.io/badge/Computer_Maintenance-Completed-green)
+
+- Google Cybersecurity Professional Certificate (Coursera)
+- Google Cybersecurity Specialization
+- Network Administration
+- Computer Maintenance
+
+
 
 
 
