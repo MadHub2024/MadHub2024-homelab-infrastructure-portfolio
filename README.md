@@ -20,6 +20,15 @@ This repository documents the design, operation, security, and troubleshooting o
 
 ## Live site
 
+
+## Download
+
+A rebuilt version of the portfolio is included in this repository as a ZIP archive:
+
+- [Denny-Brathwaite-Portfolio-Rebuild.zip](https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/blob/main/Denny-Brathwaite-Portfolio-Rebuild.zip)
+
+You can download or browse the archive from the link above.
+
 ## Badges
 
 ![Cloudflare Pages](https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange)
@@ -53,7 +62,6 @@ Designed for deployment to Cloudflare Pages at:
 - Google Cybersecurity Specialization
 - Network Administration
 - Computer Maintenance
-
 
 
 
@@ -164,7 +172,7 @@ LibreNMS
     │   ├── OpenPostings Web
     │   ├── Tailscale
     │   ├── SNMP
-    │   ├── SSH
+    │   │   ├── SSH
     │   ├── nftables
     │   ├── lm-sensors
     │   └── smartmontools
