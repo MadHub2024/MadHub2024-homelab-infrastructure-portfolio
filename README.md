@@ -101,16 +101,13 @@ python3 -m http.server 8080
 ```
 
 Open: http://127.0.0.1:8080
-``` ````
-
-What I changed: fixed the stray/backtick formatting, put the tree in a fenced code block, added language tags for the command block, and made the Local preview instructions a short runnable snippet. If you want, I can commit this change directly to your README.md.
 
 
 
 ## Network Architecture 
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener noreferrer">
+  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener nore[...]">
     <img src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" alt="Network architecture diagram" style="max-width:100%;height:auto;width:1200px;">
   </a>
 </p>
