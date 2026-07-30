@@ -36,7 +36,7 @@
     <section class="hero">
       <div class="hero-left">
         <h2>I build, secure, and troubleshoot enterprise-style infrastructure.</h2>
-        <p>I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitoring, and secur[...]
+        <p>I am an IT support and infrastructure professional with hands-on experience administering Linux systems, segmented networks, Docker services, DNS, reverse proxies, monitoring, and secur[...[...]
         <div class="cta">
           <a class="btn" href="#case-studies">View case studies</a>
           <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download résumé</a>
@@ -364,25 +364,10 @@ Lenovo ThinkCentre M73
 
   <footer class="site-footer">
     <div class="container">
-      <p>© Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets.</p>
+      <p>© <span id="year"></span> Denny Brathwaite. Hosted with GitHub and Cloudflare Workers Static Assets.</p>
     </div>
   </footer>
 
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const siteNav = document.getElementById('siteNav');
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-      navToggle.setAttribute('aria-expanded', String(!expanded));
-      siteNav.classList.toggle('open');
-    });
-
-    // Close mobile nav on link click
-    document.querySelectorAll('#siteNav a').forEach(a => a.addEventListener('click', () => {
-      siteNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    }));
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
