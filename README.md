@@ -80,7 +80,8 @@ Designed for deployment to Cloudflare Pages at:
 
 ## Repository structure
 
- ```text
+```text
+.
 ├── index.html
 ├── styles.css
 ├── script.js
@@ -89,18 +90,20 @@ Designed for deployment to Cloudflare Pages at:
 ├── configs/
 ├── resume/
 └── DEPLOYMENT.md
- ```
-
+```
 
 ## Local preview
 
-From the repository directory:
+From the repository directory, run:
 
- ```bash
- python3 -m http.server 8080
- ```
+```bash
+python3 -m http.server 8080
+```
 
- Open `http://127.0.0.1:8080`.
+Open: http://127.0.0.1:8080
+``` ````
+
+What I changed: fixed the stray/backtick formatting, put the tree in a fenced code block, added language tags for the command block, and made the Local preview instructions a short runnable snippet. If you want, I can commit this change directly to your README.md.
 
 
 
