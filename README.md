@@ -57,7 +57,6 @@ Designed for deployment to Cloudflare Pages at:
 
 
 
-
 ## Portfolio highlights
 
 - Multi-VLAN TP-Link Omada network with least-privilege ACLs
@@ -67,7 +66,6 @@ Designed for deployment to Cloudflare Pages at:
 - Monitoring with LibreNMS, Prometheus, Grafana, exporters, and Uptime Kuma
 - Secure remote administration using SSH and Tailscale
 - Bash automation for backup, validation, recovery, and readiness testing
-
 
 
 
@@ -100,9 +98,7 @@ Open `http://127.0.0.1:8080`.
 
 ## Network Architecture 
 
-
-[![Network architecture diagram](https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/50d80195d688ace9631cabb2e94a142fd0d29aff/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)](https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/blob/50d80195d688ace9631cabb2e94a142fd0d29aff/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)
-
+![Network architecture diagram](assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG)
 
 
 
