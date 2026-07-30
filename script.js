@@ -1,19 +1,21 @@
-const menuButton = document.querySelector('.menu-button');
-const navLinks = document.querySelector('.nav-links');
+// Site-wide UI scripts: mobile nav toggle and small helpers
+const navToggle = document.getElementById('navToggle');
+const siteNav = document.getElementById('siteNav');
 
-if (menuButton && navLinks) {
-  menuButton.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    menuButton.setAttribute('aria-expanded', String(open));
+if (navToggle && siteNav) {
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    siteNav.classList.toggle('open');
   });
 
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-    });
-  });
+  // Close mobile nav on link click
+  siteNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    siteNav.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
 }
 
-const year = document.querySelector('#year');
-if (year) year.textContent = new Date().getFullYear();
+// Populate current year if a #year element is present
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
