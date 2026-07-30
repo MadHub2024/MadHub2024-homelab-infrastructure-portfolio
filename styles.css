@@ -140,3 +140,6 @@ body{
   .readme-section{padding:16px}
   .cert-badges img{height:22px}
 }
+
+/* README images */
+.readme-section img{max-width:100%;height:auto;border-radius:8px;display:block;margin:12px 0}
