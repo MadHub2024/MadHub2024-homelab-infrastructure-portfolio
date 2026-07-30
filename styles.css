@@ -214,7 +214,7 @@ body{
 
 /* modal image — very large but constrained to viewport */
 .modal-panel img{
-  width:calc(min(1600px, 96vw));
+  width:calc(min(1800px, 96vw));
   max-height:calc(90vh - 80px);
   height:auto;
   display:block;
