@@ -54,7 +54,7 @@ Designed for deployment to Cloudflare Pages at:
 
 ## Certifications
 
-![Google Cybersecurity Professional Certificate](https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google)
+<a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google" /></a>
 ![Google Cybersecurity Specialization](https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google)
 ![Network Administration](https://img.shields.io/badge/Network_Administration-Completed-green)
 ![Computer Maintenance](https://img.shields.io/badge/Computer_Maintenance-Completed-green)
@@ -107,7 +107,7 @@ Open: http://127.0.0.1:8080
 ## Network Architecture 
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener nore[...]">
+  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener nore[...][...]">
     <img src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" alt="Network architecture diagram" style="max-width:100%;height:auto;width:1200px;">
   </a>
 </p>
@@ -189,7 +189,7 @@ LibreNMS
         ├── Vaultwarden
         ├── LibreNMS
         │   ├── LibreNMS application
-        │   ├── Dispatcher
+        │   ├─�� Dispatcher
         │   ├── Redis
         │   └── MariaDB
         ├── Home Assistant
@@ -259,3 +259,4 @@ The following information has been intentionally removed or replaced:
 - Tailscale authentication keys
 
 The architecture, configuration methodology, and deployment processes remain technically accurate while protecting production infrastructure.
+
