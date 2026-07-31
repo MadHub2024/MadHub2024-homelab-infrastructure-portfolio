@@ -259,3 +259,50 @@ body{
   .modal-close{top:6px;right:6px;font-size:22px;padding:6px}
   .modal-panel img{width:calc(96vw);max-height:calc(80vh - 60px)}
 }
+
+/* MONITORING-OBSERVABILITY-COLLAGE */
+.dashboard-card{
+  margin:20px 0 28px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);
+  box-shadow:0 12px 36px rgba(2,6,23,0.35);
+}
+
+.dashboard-trigger{
+  display:block;
+  text-decoration:none;
+  overflow:hidden;
+}
+
+.dashboard-trigger:focus-visible{
+  outline:3px solid rgba(45,212,191,0.45);
+  outline-offset:4px;
+}
+
+.dashboard-image{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+  border-radius:0;
+  cursor:zoom-in;
+  transition:transform .18s ease, filter .18s ease;
+}
+
+.dashboard-trigger:hover .dashboard-image{
+  transform:scale(1.008);
+  filter:brightness(1.04);
+}
+
+.dashboard-card figcaption{
+  padding:16px 18px 18px;
+  color:var(--muted);
+  font-size:0.95rem;
+  line-height:1.55;
+}
+
+.dashboard-card figcaption strong{
+  color:var(--text);
+}

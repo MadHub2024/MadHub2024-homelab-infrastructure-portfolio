@@ -260,3 +260,18 @@ The following information has been intentionally removed or replaced:
 
 The architecture, configuration methodology, and deployment processes remain technically accurate while protecting production infrastructure.
 
+<!-- MONITORING-OBSERVABILITY-COLLAGE:START -->
+
+## Monitoring & Observability
+
+The homelab uses layered monitoring for service availability, DNS
+performance, infrastructure health, container visibility, and network
+topology.
+
+[![Monitoring and observability dashboard collage](assets/images/1F22F4C8-D205-4F73-A05C-46B15863B6D3.PNG)](assets/images/1F22F4C8-D205-4F73-A05C-46B15863B6D3.PNG)
+
+*Dashboard collection showing Uptime Kuma, Technitium DNS, AdGuard Home,
+Grafana, and LibreNMS monitoring.*
+
+<!-- MONITORING-OBSERVABILITY-COLLAGE:END -->
+
