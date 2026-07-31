@@ -436,3 +436,132 @@ body{
   }
 }
 /* MONITORING-GALLERY:END */
+
+/* RECRUITER-TRANSLATION:START */
+.recruiter-translation {
+  position: relative;
+  overflow: hidden;
+}
+
+.recruiter-translation::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+}
+
+.translation-intro {
+  max-width: 850px;
+}
+
+.translation-eyebrow {
+  margin: 0 0 0.45rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.translation-summary {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.homelab-metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin: 1.75rem 0 2rem;
+}
+
+.metric {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.metric strong {
+  display: block;
+  color: var(--accent);
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  line-height: 1.1;
+}
+
+.metric span {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.translation-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 0.75rem;
+}
+
+.translation-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+}
+
+.translation-table caption {
+  padding: 1rem;
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+}
+
+.translation-table th,
+.translation-table td {
+  padding: 0.95rem 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  text-align: left;
+  vertical-align: top;
+}
+
+.translation-table th {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.translation-table td {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.case .outcome {
+  padding: 0.8rem 0.9rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 0.45rem 0.45rem 0;
+  background: rgba(45, 212, 191, 0.055);
+  line-height: 1.55;
+}
+
+.case .outcome strong {
+  color: var(--accent);
+}
+
+@media (max-width: 920px) {
+  .homelab-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .homelab-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric:last-child {
+    grid-column: 1 / -1;
+  }
+}
+/* RECRUITER-TRANSLATION:END */

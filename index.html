@@ -111,6 +111,130 @@
       </aside>
     </section>
 
+        <!-- RECRUITER-TRANSLATION:START -->
+    <section
+      id="recruiter-translation"
+      class="section card recruiter-translation"
+      aria-labelledby="recruiter-translation-heading">
+
+      <div class="translation-intro">
+        <p class="translation-eyebrow">For non-technical reviewers</p>
+
+        <h2 id="recruiter-translation-heading">
+          Translating the homelab into workplace experience
+        </h2>
+
+        <p class="translation-summary">
+          This environment is comparable in scale and operating discipline to
+          supporting a small branch office or small-business network. It
+          includes segmented networks, Linux servers, DNS infrastructure,
+          application hosting, monitoring, backups, secure remote access,
+          troubleshooting, and technical documentation.
+        </p>
+      </div>
+
+      <div class="homelab-metrics" aria-label="Homelab scale">
+        <article class="metric">
+          <strong>7+</strong>
+          <span>segmented VLANs</span>
+        </article>
+
+        <article class="metric">
+          <strong>20+</strong>
+          <span>self-hosted services</span>
+        </article>
+
+        <article class="metric">
+          <strong>2</strong>
+          <span>Linux servers</span>
+        </article>
+
+        <article class="metric">
+          <strong>10 Gb</strong>
+          <span>network backbone</span>
+        </article>
+
+        <article class="metric">
+          <strong>3</strong>
+          <span>internal DNS zones</span>
+        </article>
+      </div>
+
+      <div class="translation-table-wrapper">
+        <table class="translation-table">
+          <caption>
+            How portfolio technologies map to common job-posting language
+          </caption>
+
+          <thead>
+            <tr>
+              <th scope="col">Portfolio evidence</th>
+              <th scope="col">Common employer language</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>TP-Link Omada VLANs, routing, ACLs, and mDNS</td>
+              <td>
+                Branch-office networking, network segmentation,
+                access-control administration, and troubleshooting
+              </td>
+            </tr>
+
+            <tr>
+              <td>Technitium DNS and AdGuard Home</td>
+              <td>
+                DNS administration, internal name resolution,
+                secure DNS, filtering, and service discovery
+              </td>
+            </tr>
+
+            <tr>
+              <td>Uptime Kuma, Prometheus, Grafana, and LibreNMS</td>
+              <td>
+                NOC monitoring, infrastructure observability,
+                alerting, availability management, and SNMP monitoring
+              </td>
+            </tr>
+
+            <tr>
+              <td>Docker Compose, Portainer, and Linux services</td>
+              <td>
+                Linux application hosting, container operations,
+                service deployment, and lifecycle management
+              </td>
+            </tr>
+
+            <tr>
+              <td>Caddy reverse proxy and internal PKI</td>
+              <td>
+                Web infrastructure, TLS administration,
+                reverse proxies, and secure application publishing
+              </td>
+            </tr>
+
+            <tr>
+              <td>Tailscale and SSH</td>
+              <td>
+                Secure remote administration, VPN access,
+                endpoint support, and privileged troubleshooting
+              </td>
+            </tr>
+
+            <tr>
+              <td>Git, Bash automation, backups, and case studies</td>
+              <td>
+                Change management, scripting, rollback planning,
+                technical documentation, and incident recovery
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <!-- RECRUITER-TRANSLATION:END -->
+
     <section id="about" class="section card">
       <h2>About</h2>
       <h3>Operations discipline applied to infrastructure engineering</h3>
@@ -189,7 +313,7 @@
           <span class="index">01</span>
           <h3>Multi-VLAN network segmentation</h3>
           <p>Designed an Omada-based network separating management, servers, workstations, IoT, media, printers, and guest traffic.</p>
-          <p class="outcome"><strong>Outcome:</strong> Least-privilege access while preserving DNS, printing, mDNS, and automation workflows.</p>
+          <p class="outcome"><strong>Measured outcome:</strong> Segmented more than <strong>7 VLANs</strong> while preserving required DNS, printing, mDNS, automation, and administrative workflows.</p>
           <a class="read-link" href="#architecture">Read case study →</a>
         </article>
 
@@ -197,7 +321,7 @@
           <span class="index">02</span>
           <h3>Layered DNS architecture</h3>
           <p>Implemented Technitium DNS as the primary LAN resolver, with AdGuard Home providing filtering and encrypted upstream resolution.</p>
-          <p class="outcome"><strong>Outcome:</strong> Centralized internal zones, consistent service discovery, and network-wide filtering.</p>
+          <p class="outcome"><strong>Measured outcome:</strong> Centralized resolution for <strong>3 internal DNS zones</strong> through a <strong>2-stage resolver chain</strong>: Technitium DNS to AdGuard Home and encrypted upstream DNS.</p>
           <a class="read-link" href="#architecture">Read case study →</a>
         </article>
 
@@ -205,7 +329,7 @@
           <span class="index">03</span>
           <h3>Vaultwarden recovery and hardening</h3>
           <p>Recovered a missing container, verified persistent data, checked SQLite integrity, recreated the service, and hardened the admin token.</p>
-          <p class="outcome"><strong>Outcome:</strong> Restored service with verified backups, HTTP readiness checks, TLS validation, and secure credentials.</p>
+          <p class="outcome"><strong>Measured outcome:</strong> Restored <strong>1 production-style password-management service</strong>, confirmed SQLite integrity with an <strong>OK</strong> result, and validated readiness with an <strong>HTTP 200</strong> response.</p>
           <a class="read-link" href="#contact">Read case study →</a>
         </article>
 
@@ -213,7 +337,7 @@
           <span class="index">04</span>
           <h3>Monitoring and observability</h3>
           <p>Combined LibreNMS, Prometheus, Grafana, cAdvisor, Node Exporter, Blackbox Exporter, and Uptime Kuma.</p>
-          <p class="outcome"><strong>Outcome:</strong> Layered visibility into hosts, containers, network devices, service health, and uptime.</p>
+          <p class="outcome"><strong>Measured outcome:</strong> Established visibility across <strong>20+ self-hosted services</strong>, <strong>2 Linux servers</strong>, and a <strong>7+ VLAN</strong> network using host, container, DNS, SNMP, and availability monitoring.</p>
           <a class="read-link" href="#architecture">Read case study →</a>
         </article>
       </div>
