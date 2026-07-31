@@ -121,6 +121,10 @@ body{
 /* Certificate badges block (from README certificates) */
 .cert-badges{display:flex;gap:10px;align-items:center;margin:8px 0 14px}
 .cert-badges img{height:28px;border-radius:6px;display:inline-block;width:auto;object-fit:contain}
+/* Ensure linked badge shows pointer and is keyboard-focusable */
+.cert-badges a{display:inline-block}
+.cert-badges a img{cursor:pointer}
+.cert-badges a:focus-visible{outline:3px solid rgba(45,212,191,0.25);outline-offset:3px;border-radius:6px}
 
 /* Live site link highlight */
 .live-site a{
