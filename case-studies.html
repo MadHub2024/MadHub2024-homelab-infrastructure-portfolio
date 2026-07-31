@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071025">
+  <title>Case Studies | Denny Brathwaite — Infrastructure Portfolio</title>
+  <meta name="description" content="Explore real-world infrastructure case studies covering network segmentation, DNS architecture, container recovery, and monitoring stacks.">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio.dbservicessolutions.org/case-studies.html">
+  <meta property="og:title" content="Case Studies | Denny Brathwaite">
+  <meta property="og:description" content="Real infrastructure work documented end to end. Multi-VLAN networks, DNS architecture, container recovery, monitoring, and security hardening.">
+  <meta property="og:image" content="https://portfolio.dbservicessolutions.org/assets/images/og-case-studies.jpg">
+  <meta property="og:site_name" content="Denny Brathwaite Infrastructure Portfolio">
+  
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://portfolio.dbservicessolutions.org/case-studies.html">
+  <meta property="twitter:title" content="Case Studies | Denny Brathwaite">
+  <meta property="twitter:description" content="Real infrastructure work: network segmentation, DNS architecture, container recovery, and monitoring.">
+  <meta property="twitter:image" content="https://portfolio.dbservicessolutions.org/assets/images/og-case-studies.jpg">
+  
+  <!-- LinkedIn -->
+  <meta property="linkedin:title" content="Infrastructure Case Studies | Denny Brathwaite">
+  <meta property="linkedin:description" content="Multi-VLAN network design, layered DNS architecture, container recovery, and enterprise monitoring stacks.">
+  
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .case-studies-hero {
+      margin-bottom: 40px;
+    }
+    
+    .case-studies-hero h1 {
+      font-size: 2.2rem;
+      margin: 0 0 12px;
+      color: var(--accent);
+    }
+    
+    .case-studies-hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 700px;
+    }
+    
+    .filter-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    
+    .filter-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(45,212,191,0.3);
+      color: var(--accent);
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.18s ease;
+    }
+    
+    .filter-btn:hover {
+      background: rgba(45,212,191,0.1);
+      border-color: var(--accent);
+    }
+    
+    .filter-btn.active {
+      background: var(--accent);
+      color: #042024;
+    }
+    
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .case-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.18s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .case-card:hover {
+      border-color: rgba(45,212,191,0.3);
+      box-shadow: 0 8px 24px rgba(45,212,191,0.1);
+      transform: translateY(-2px);
+    }
+    
+    .case-card .index {
+      display: inline-block;
+      background: rgba(45,212,191,0.15);
+      color: var(--accent);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      font-size: 0.9rem;
+    }
+    
+    .case-card h3 {
+      margin: 8px 0 12px;
+      font-size: 1.3rem;
+      color: var(--text);
+    }
+    
+    .case-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex-grow: 1;
+      margin: 8px 0;
+    }
+    
+    .case-card .outcome {
+      background: rgba(45,212,191,0.05);
+      padding: 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+    
+    .case-card .outcome strong {
+      color: var(--accent);
+    }
+    
+    .case-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 12px 0;
+    }
+    
+    .tag {
+      background: rgba(255,255,255,0.06);
+      color: var(--muted);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+    
+    .case-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.18s ease;
+    }
+    
+    .case-link:hover {
+      text-decoration: underline;
+    }
+    
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 10px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-item .number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .stat-item .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
+      <a href="index.html#projects">← Back to portfolio</a>
+    </nav>
+  </header>
+
+  <main id="main" class="container">
+    <section class="case-studies-hero">
+      <h1>Case Studies</h1>
+      <p>Real infrastructure work, documented end to end. Explore my hands-on experience designing, deploying, and troubleshooting enterprise-style homelab systems.</p>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="number">4</div>
+          <div class="label">Case Studies</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">20+</div>
+          <div class="label">Services</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">7+</div>
+          <div class="label">VLANs</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">2</div>
+          <div class="label">Linux Hosts</div>
+        </div>
+      </div>
+      
+      <div class="filter-tags">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="networking">Networking</button>
+        <button class="filter-btn" data-filter="dns">DNS</button>
+        <button class="filter-btn" data-filter="containers">Containers</button>
+        <button class="filter-btn" data-filter="monitoring">Monitoring</button>
+      </div>
+    </section>
+
+    <section id="cases" class="case-grid">
+      <!-- Case 01: Network Segmentation -->
+      <article class="case-card" data-tags="networking">
+        <span class="index">01</span>
+        <h3>Multi-VLAN Network Segmentation</h3>
+        <p>Designed a secure TP-Link Omada network that isolates device classes (management, servers, workstations, IoT, media, printers, guests) while maintaining necessary service dependencies.</p>
+        
+        <div class="case-tags">
+          <span class="tag">TP-Link Omada</span>
+          <span class="tag">VLANs</span>
+          <span class="tag">ACLs</span>
+          <span class="tag">mDNS</span>
+          <span class="tag">Routing</span>
+        </div>
+        
+        <div class="outcome">
+          <strong>Outcome:</strong> Least-privilege network isolation with zero-trust inter-VLAN policies while preserving DNS resolution, AirPrint, automation, and remote administration workflows.
+        </div>
+        
+        <p><strong>Key Achievement:</strong> Reduced attack surface by segmenting 7+ device classes with explicit allow-lists, mapped all service dependencies, and validated ACL behavior from client-side testing.</p>
+        
+        <a class="case-link" href="network-segmentation.html">Read full case study →</a>
+      </article>
+
+      <!-- Case 02: DNS Architecture -->
+      <article class="case-card" data-tags="dns networking">
+        <span class="index">02</span>
+        <h3>Layered DNS Architecture</h3>
+        <p>Built a multi-layer DNS infrastructure using Technitium DNS (authoritative internal zones) and AdGuard Home (filtering, encrypted upstream) to provide reliable, fast, and secure name resolution across all VLANs.</p>
+        
+        <div class="case-tags">
+          <span class="tag">Technitium DNS</span>
+          <span class="tag">AdGuard Home</span>
+          <span class="tag">Split DNS</span>
+          <span class="tag">DoH</span>
+          <span class="tag">Troubleshooting</span>
+        </div>
+        
+        <div class="outcome">
+          <strong>Outcome:</strong> Centralized naming authority, network-wide content filtering, and encrypted upstream resolution without exposing private applications to public DNS.
+        </div>
+        
+        <p><strong>Key Achievement:</strong> Designed internal zones (.home, .dbservices, internal view of dbservicessolutions.org) with clear fault boundaries and documented troubleshooting procedures using dig, nslookup, and authoritative zone inspection.</p>
+        
+        <a class="case-link" href="dns-architecture.html">Read full case study →</a>
+      </article>
+
+      <!-- Case 03: Vaultwarden Recovery -->
+      <article class="case-card" data-tags="containers docker">
+        <span class="index">03</span>
+        <h3>Vaultwarden Recovery & Hardening</h3>
+        <p>Safely recovered a missing Vaultwarden container after an update failure while validating persistent SQLite data integrity, recreating the service, and replacing plaintext credentials with secure Argon2 hashing.</p>
+        
+        <div class="case-tags">
+          <span class="tag">Docker Compose</span>
+          <span class="tag">SQLite</span>
+          <span class="tag">Caddy</span>
+          <span class="tag">TLS</span>
+          <span class="tag">Bash Automation</span>
+        </div>
+        
+        <div class="outcome">
+          <strong>Outcome:</strong> Restored service with verified backups, automated health checks, secure administration tokens, and a repeatable update workflow.
+        </div>
+        
+        <p><strong>Key Achievement:</strong> Traced root cause to incorrect service readiness detection, implemented SQLite integrity validation, created timestamped backups, redesigned readiness tests, and automated the entire recovery process with Bash.</p>
+        
+        <a class="case-link" href="vaultwarden-recovery.html">Read full case study →</a>
+      </article>
+
+      <!-- Case 04: Monitoring Stack -->
+      <article class="case-card" data-tags="monitoring networking">
+        <span class="index">04</span>
+        <h3>Monitoring & Observability Stack</h3>
+        <p>Integrated LibreNMS, Prometheus, Grafana, exporters (Node Exporter, cAdvisor, Blackbox), and Uptime Kuma to provide layered visibility into infrastructure health, performance, and availability.</p>
+        
+        <div class="case-tags">
+          <span class="tag">LibreNMS</span>
+          <span class="tag">Prometheus</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">SNMP</span>
+          <span class="tag">Alerting</span>
+        </div>
+        
+        <div class="outcome">
+          <strong>Outcome:</strong> Single pane of glass for network devices, Linux hosts, containerized services, and synthetic uptime monitoring with historical trending and alert integration.
+        </div>
+        
+        <p><strong>Key Achievement:</strong> Unified monitoring across physical network equipment (Omada controller, ER7412 router), Linux servers (native services and Docker containers), and remote service health via Blackbox Exporter.</p>
+        
+        <a class="case-link" href="monitoring-stack.html">Read full case study →</a>
+      </article>
+    </section>
+
+    <section style="margin-top: 60px; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 10px;">
+      <h2>Why These Case Studies?</h2>
+      <p>Each case study represents a major architectural or operational challenge in my homelab. Rather than simply listing technologies, I document:</p>
+      <ul style="color: var(--muted); line-height: 1.8;">
+        <li><strong>The Challenge:</strong> What problem needed to be solved?</li>
+        <li><strong>Design Decisions:</strong> Why did I choose this approach?</li>
+        <li><strong>Implementation Details:</strong> How was it deployed and configured?</li>
+        <li><strong>Lessons Learned:</strong> What went wrong, and how did I fix it?</li>
+        <li><strong>Measurable Results:</strong> How does this improve reliability, security, or observability?</li>
+      </ul>
+    </section>
+
+    <a class="back-link" href="index.html">← Back to portfolio</a>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© <span id="year"></span> Denny Brathwaite. Hosted on Cloudflare Pages. <a href="https://github.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio" target="_blank" rel="noopener">View source on GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Populate year
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Filter functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const caseCards = document.querySelectorAll('.case-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          
+          // Update active button
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Filter cards
+          caseCards.forEach(card => {
+            const tags = card.getAttribute('data-tags');
+            if (filter === 'all' || tags.includes(filter)) {
+              card.style.display = '';
+              setTimeout(() => card.style.opacity = '1', 10);
+            } else {
+              card.style.opacity = '0.3';
+              card.style.pointerEvents = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

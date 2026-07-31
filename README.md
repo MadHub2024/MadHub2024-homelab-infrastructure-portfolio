@@ -20,21 +20,31 @@ This repository documents the design, operation, security, and troubleshooting o
 
 ## Live site
 
+
+## Download
+
+A rebuilt version of the portfolio is included in this repository as a ZIP archive:
+
+- Denny-Brathwaite-Portfolio-Rebuild.zip
+- Browse source: MadHub2024/MadHub2024-homelab-infrastructure-portfolio
+
+You can download or browse the archive from the repository above.
+
 ## Badges
 
-![Cloudflare Pages](https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange)
+<a href="certificates.html" title="Cloudflare Pages"><img alt="Cloudflare Pages" src="https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange" /></a>
 
-![Docker](https://img.shields.io/badge/Docker-20+-2496ED)
+<a href="certificates.html" title="Docker"><img alt="Docker" src="https://img.shields.io/badge/Docker-20+-2496ED" /></a>
 
-![TP-Link Omada](https://img.shields.io/badge/Network-TP--Link_Omada-00B8E6)
+<a href="certificates.html" title="TP-Link Omada"><img alt="TP-Link Omada" src="https://img.shields.io/badge/Network-TP--Link_Omada-00B8E6" /></a>
 
-![Technitium DNS](https://img.shields.io/badge/DNS-Technitium-success)
+<a href="certificates.html" title="Technitium DNS"><img alt="Technitium DNS" src="https://img.shields.io/badge/DNS-Technitium-success" /></a>
 
-![AdGuard Home](https://img.shields.io/badge/Filtering-AdGuard_Home-green)
+<a href="certificates.html" title="AdGuard Home"><img alt="AdGuard Home" src="https://img.shields.io/badge/Filtering-AdGuard_Home-green" /></a>
 
-![Vaultwarden](https://img.shields.io/badge/Password_Manager-Vaultwarden-red)
+<a href="certificates.html" title="Vaultwarden"><img alt="Vaultwarden" src="https://img.shields.io/badge/Password_Manager-Vaultwarden-red" /></a>
 
-![License-MIT](https://img.shields.io/badge/License-MIT-blue)
+<a href="certificates.html" title="License-MIT"><img alt="License-MIT" src="https://img.shields.io/badge/License-MIT-blue" /></a>
 
 
 Designed for deployment to Cloudflare Pages at:
@@ -42,7 +52,17 @@ Designed for deployment to Cloudflare Pages at:
 `portfolio.dbservicessolutions.org`
 
 
+## Certifications
 
+<a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google" /></a>
+<a href="certificates.html" title="Google Cybersecurity Specialization"><img alt="Google Cybersecurity Specialization" src="https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google" /></a>
+<a href="certificates.html" title="Network Administration"><img alt="Network Administration" src="https://img.shields.io/badge/Network_Administration-Completed-green" /></a>
+<a href="certificates.html" title="Computer Maintenance"><img alt="Computer Maintenance" src="https://img.shields.io/badge/Computer_Maintenance-Completed-green" /></a>
+
+- Google Cybersecurity Professional Certificate (Coursera)
+- Google Cybersecurity Specialization
+- Network Administration
+- Computer Maintenance
 
 
 
@@ -55,7 +75,6 @@ Designed for deployment to Cloudflare Pages at:
 - Monitoring with LibreNMS, Prometheus, Grafana, exporters, and Uptime Kuma
 - Secure remote administration using SSH and Tailscale
 - Bash automation for backup, validation, recovery, and readiness testing
-
 
 
 
@@ -73,43 +92,31 @@ Designed for deployment to Cloudflare Pages at:
 └── DEPLOYMENT.md
 ```
 
-
 ## Local preview
 
-From the repository directory:
+From the repository directory, run:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Open `http://127.0.0.1:8080`.
+Open: http://127.0.0.1:8080
 
 
 
 ## Network Architecture 
 
+<p align="center">
+  <a href="https://raw.githubusercontent.com/MadHub2024/MadHub2024-homelab-infrastructure-portfolio/main/assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" target="_blank" rel="noopener nore[...][...]">
+    <img src="assets/images/0C2274B9-713F-41C5-B935-696DF4746B12.PNG" alt="Network architecture diagram" style="max-width:100%;height:auto;width:1200px;">
+  </a>
+</p>
 
-    Internet
-          │
-    Comcast Business
-          │
-    ER7412 Router
-          │
-    ───────────────
-    SX3008F Switch
-    ───────────────
-    │
-    ├── VLAN 60 Management
-    │
-    ├── VLAN 50 Workstations
-    │
-    ├── VLAN 40 Servers
-    │
-    ├── VLAN 30 IoT
-    │
-    └── VLAN 20 Media
+**Interactive diagram**
 
+Click the architecture image on the portfolio page to open a larger, readable popout (press Esc or click the X/backdrop to close). This makes the PNG text legible on smaller screens.
 
+(Click the diagram to open the full-resolution image in a new tab.)
 
 
 ## DNS Flow
@@ -164,6 +171,7 @@ LibreNMS
 
 ## Dell Hybrid Architecture 
 
+
     Dell OptiPlex 7060
     ├── Native Services
     │   ├── Technitium DNS
@@ -173,18 +181,18 @@ LibreNMS
     │   ├── OpenPostings Web
     │   ├── Tailscale
     │   ├── SNMP
-    │   ├── SSH
+    │   │   ├── SSH
     │   ├── nftables
     │   ├── lm-sensors
-    │   └── smartmontools
+    │   └── smartmonttools
     └── Docker Services
         ├── Vaultwarden
         ├── LibreNMS
         │   ├── LibreNMS application
-        │   ├── Dispatcher
+        │   ├─�� Dispatcher
         │   ├── Redis
         │   └── MariaDB
-        ├── Home Assistant
+        ├─�� Home Assistant
         ├── Portainer
         ├── ESPHome
         ├── Matter Server
@@ -193,6 +201,7 @@ LibreNMS
 
 
 ## Lenovo Hybrid Architecture 
+
 
     Lenovo ThinkCentre M73
     ├── Native Services
@@ -218,9 +227,9 @@ LibreNMS
     │   ├── SSH
     │   ├── UFW
     │   ├── Chrony
-    │   ├── smartmontools
+    │   ├── smartmonttools
     │   ├── lm-sensors
-    │   └── zram Swap
+    │   │   └── zram Swap
     └── Docker Services
         ├── Homepage
         ├── Open WebUI
@@ -250,3 +259,4 @@ The following information has been intentionally removed or replaced:
 - Tailscale authentication keys
 
 The architecture, configuration methodology, and deployment processes remain technically accurate while protecting production infrastructure.
+
