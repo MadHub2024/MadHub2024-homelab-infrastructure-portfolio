@@ -105,8 +105,9 @@
       <section>
         <h2>Segmentation design</h2>
         <dl class="incident-facts">
-          <div><dt>VLAN 10</dt><dd>Guest</dd></div>
-          <div><dt>VLAN 20</dt><dd>IoT and media</dd></div>
+          <div><dt>VLAN 5</dt><dd>Guest</dd></div>
+          <div><dt>VLAN 10</dt><dd>Media</dd></div>
+          <div><dt>VLAN 20</dt><dd>IoT</dd></div>
           <div><dt>VLAN 30</dt><dd>Printers</dd></div>
           <div><dt>VLAN 40</dt><dd>Servers</dd></div>
           <div><dt>VLAN 50</dt><dd>Workstations</dd></div>
@@ -214,7 +215,7 @@
         <h2>Deployment timeline</h2>
         <ol class="incident-timeline">
           <li><strong>Inventory</strong><span>Mapped devices, services, trust levels, and required communication paths.</span></li>
-          <li><strong>Addressing plan</strong><span>Assigned dedicated IPv4 subnets to management, servers, workstations, IoT/media, printers, guests, and lab systems.</span></li>
+          <li><strong>Addressing plan</strong><span>Assigned dedicated IPv4 subnets to management, servers, workstations, IoT, media, printers, guests, and lab systems.</span></li>
           <li><strong>VLAN creation</strong><span>Created the VLAN interfaces, DHCP scopes, and switch-port profiles in Omada.</span></li>
           <li><strong>DNS alignment</strong><span>Configured client scopes to use Technitium DNS at <code>10.10.40.4</code>.</span></li>
           <li><strong>ACL rollout</strong><span>Applied explicit permit rules followed by default-deny inter-VLAN controls.</span></li>
