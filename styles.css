@@ -306,3 +306,133 @@ body{
 .dashboard-card figcaption strong{
   color:var(--text);
 }
+
+/* MONITORING-GALLERY:START */
+.monitoring-gallery {
+  margin: 3rem 0;
+}
+
+.monitoring-gallery__header {
+  margin-bottom: 2rem;
+}
+
+.monitoring-gallery__header h3 {
+  margin-bottom: 0.75rem;
+}
+
+.monitoring-platform {
+  margin-top: 2.75rem;
+}
+
+.monitoring-platform__heading {
+  margin-bottom: 1.25rem;
+}
+
+.monitoring-platform__heading h4 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+}
+
+.monitoring-platform__heading p {
+  margin-bottom: 0;
+}
+
+.monitoring-gallery-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.monitoring-gallery-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.monitoring-gallery-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.monitoring-gallery-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 0.9rem;
+  background: rgba(15, 23, 42, 0.34);
+  box-shadow: 0 0.75rem 1.8rem rgba(0, 0, 0, 0.16);
+}
+
+.monitoring-gallery-card a {
+  display: block;
+  overflow: hidden;
+  background: rgba(2, 6, 23, 0.35);
+}
+
+.monitoring-gallery-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.monitoring-gallery-card a:hover img,
+.monitoring-gallery-card a:focus-visible img {
+  transform: scale(1.015);
+  filter: brightness(1.06);
+}
+
+.monitoring-gallery-card a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: -3px;
+}
+
+.monitoring-gallery-card figcaption {
+  flex: 1;
+  padding: 1rem 1.1rem 1.15rem;
+  line-height: 1.55;
+}
+
+.monitoring-gallery-card figcaption strong {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 1000px) {
+  .monitoring-gallery-grid--three {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .monitoring-gallery {
+    margin: 2.25rem 0;
+  }
+
+  .monitoring-gallery-grid--three,
+  .monitoring-gallery-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .monitoring-gallery-card img {
+    aspect-ratio: auto;
+    object-fit: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monitoring-gallery-card img {
+    transition: none;
+  }
+
+  .monitoring-gallery-card a:hover img,
+  .monitoring-gallery-card a:focus-visible img {
+    transform: none;
+  }
+}
+/* MONITORING-GALLERY:END */
