@@ -1,0 +1,393 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+REPO="$(git -C "$SCRIPT_DIR/.." rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "ERROR: Could not locate the Git repository."
+  exit 1
+}
+
+cd "$REPO"
+
+INDEX="index.html"
+PAGE="monitoring-platform.html"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
+[[ -f "$INDEX" ]] || {
+  echo "ERROR: Missing index.html"
+  exit 1
+}
+
+cp -a "$INDEX" "${INDEX}.backup-${STAMP}"
+[[ ! -f "$PAGE" ]] || cp -a "$PAGE" "${PAGE}.backup-${STAMP}"
+
+cat > "$PAGE" <<'HTML'
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitoring and Observability Platform | Denny Brathwaite</title>
+  <meta
+    name="description"
+    content="Case study documenting a layered monitoring and observability platform using Grafana, Prometheus, LibreNMS, Uptime Kuma, cAdvisor, and Node Exporter."
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to case study</a>
+
+  <header class="site-header">
+    <div class="container incident-nav">
+      <a class="incident-brand" href="index.html">
+        <span aria-hidden="true">DB</span>
+        <span>Denny Brathwaite</span>
+      </a>
+      <nav aria-label="Case study navigation">
+        <a href="index.html#case-studies">All case studies</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="incident-hero">
+      <div class="container incident-container">
+        <p class="incident-eyebrow">Case Study 04 · Operations</p>
+        <h1>Layered Monitoring and Observability Platform</h1>
+        <p class="incident-lead">
+          Building a multi-tool monitoring architecture that combines service
+          availability, host metrics, container telemetry, network visibility,
+          and DNS analytics across a segmented homelab.
+        </p>
+
+        <div class="incident-tags" aria-label="Technologies used">
+          <span>Grafana</span>
+          <span>Prometheus</span>
+          <span>Uptime Kuma</span>
+          <span>LibreNMS</span>
+          <span>cAdvisor</span>
+          <span>Node Exporter</span>
+          <span>Technitium DNS</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="container incident-container incident-report">
+      <section>
+        <h2>Executive summary</h2>
+        <p>
+          A single monitoring tool could not provide complete visibility into
+          service availability, Linux host health, Docker container behavior,
+          network-device state, and DNS activity. The environment therefore
+          adopted a layered monitoring design in which each platform owns a
+          specific class of telemetry.
+        </p>
+
+        <div class="incident-callout">
+          <strong>Outcome:</strong>
+          The monitoring stack provides operational visibility across more than
+          20 self-hosted services, two Linux infrastructure servers, Docker
+          workloads, DNS services, and a network segmented into more than seven
+          logical zones.
+        </div>
+      </section>
+
+      <section>
+        <h2>Environment</h2>
+        <dl class="incident-facts">
+          <div><dt>Infrastructure hosts</dt><dd>Two Linux servers</dd></div>
+          <div><dt>Service footprint</dt><dd>20+ self-hosted services</dd></div>
+          <div><dt>Network scope</dt><dd>7+ VLANs</dd></div>
+          <div><dt>Dashboard platform</dt><dd>Grafana</dd></div>
+          <div><dt>Metrics collection</dt><dd>Prometheus</dd></div>
+          <div><dt>Host telemetry</dt><dd>Node Exporter</dd></div>
+          <div><dt>Container telemetry</dt><dd>cAdvisor</dd></div>
+          <div><dt>Availability checks</dt><dd>Uptime Kuma</dd></div>
+          <div><dt>Network monitoring</dt><dd>LibreNMS</dd></div>
+          <div><dt>DNS visibility</dt><dd>Technitium DNS and AdGuard Home</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <ul>
+          <li>A service could be reachable while its host was resource constrained.</li>
+          <li>A container could be running while the application endpoint was unavailable.</li>
+          <li>Network-device issues required SNMP-oriented visibility rather than application metrics.</li>
+          <li>DNS failures needed query-level evidence separate from web-service monitoring.</li>
+          <li>Troubleshooting required correlation across hosts, containers, applications, and network paths.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Architecture</h2>
+        <ol class="incident-timeline">
+          <li>
+            <strong>Uptime Kuma</strong>
+            <span>
+              Performs endpoint and availability checks for critical internal
+              services and records status history and response time.
+            </span>
+          </li>
+          <li>
+            <strong>Prometheus</strong>
+            <span>
+              Collects time-series metrics from host and container exporters.
+            </span>
+          </li>
+          <li>
+            <strong>Grafana</strong>
+            <span>
+              Presents operational dashboards for resource use, service health,
+              and infrastructure trends.
+            </span>
+          </li>
+          <li>
+            <strong>Node Exporter</strong>
+            <span>
+              Exposes Linux CPU, memory, filesystem, load, and network metrics.
+            </span>
+          </li>
+          <li>
+            <strong>cAdvisor</strong>
+            <span>
+              Provides container-level CPU, memory, filesystem, and network telemetry.
+            </span>
+          </li>
+          <li>
+            <strong>LibreNMS</strong>
+            <span>
+              Supports SNMP-based network-device discovery, health monitoring,
+              and topology-oriented visibility.
+            </span>
+          </li>
+          <li>
+            <strong>Technitium DNS and AdGuard Home</strong>
+            <span>
+              Provide query statistics, failure evidence, filtering data, and
+              resolver-path visibility.
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Implementation sequence</h2>
+        <ol class="incident-timeline">
+          <li><strong>Service inventory</strong><span>Identified critical applications, hosts, containers, DNS services, and network devices.</span></li>
+          <li><strong>Availability monitoring</strong><span>Added endpoint checks in Uptime Kuma for infrastructure applications.</span></li>
+          <li><strong>Exporter deployment</strong><span>Deployed Node Exporter and cAdvisor to expose host and container metrics.</span></li>
+          <li><strong>Metrics collection</strong><span>Configured Prometheus to collect time-series telemetry from available exporters.</span></li>
+          <li><strong>Dashboard creation</strong><span>Built Grafana views for infrastructure overview, resource usage, and service telemetry.</span></li>
+          <li><strong>Network visibility</strong><span>Deployed the LibreNMS application, dispatcher, Redis, and MariaDB stack for SNMP monitoring.</span></li>
+          <li><strong>DNS correlation</strong><span>Used Technitium and AdGuard dashboards to compare service symptoms with resolver activity.</span></li>
+          <li><strong>Portfolio evidence</strong><span>Sanitized screenshots before publishing dashboard evidence publicly.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Monitoring responsibilities</h2>
+
+        <h3>Availability</h3>
+        <p>
+          Uptime Kuma answers the immediate operational question: can the
+          service endpoint be reached, and how quickly is it responding?
+        </p>
+
+        <h3>Host health</h3>
+        <p>
+          Node Exporter provides evidence about CPU, memory, load, storage,
+          filesystem utilization, and network activity on Linux hosts.
+        </p>
+
+        <h3>Container behavior</h3>
+        <p>
+          cAdvisor separates container resource consumption from overall host
+          utilization, making it easier to identify workload-specific pressure.
+        </p>
+
+        <h3>Network state</h3>
+        <p>
+          LibreNMS adds device-centric visibility through SNMP, interface
+          status, health metrics, and network topology.
+        </p>
+
+        <h3>DNS behavior</h3>
+        <p>
+          Technitium DNS and AdGuard Home provide evidence for query volume,
+          client activity, cache behavior, blocked requests, and resolver failures.
+        </p>
+      </section>
+
+      <section>
+        <h2>Operational workflow</h2>
+        <p>
+          Monitoring is used as a diagnostic sequence rather than a collection
+          of unrelated dashboards:
+        </p>
+
+        <ol class="incident-timeline">
+          <li><strong>Detect</strong><span>Use Uptime Kuma or dashboard status to identify an unavailable or degraded service.</span></li>
+          <li><strong>Scope</strong><span>Determine whether the symptom affects one endpoint, one container, one host, or multiple network segments.</span></li>
+          <li><strong>Correlate</strong><span>Compare Grafana host and container metrics with application logs and DNS activity.</span></li>
+          <li><strong>Validate the path</strong><span>Test DNS, TCP reachability, HTTP readiness, and routing independently.</span></li>
+          <li><strong>Recover</strong><span>Apply the smallest corrective action supported by the available evidence.</span></li>
+          <li><strong>Verify</strong><span>Confirm endpoint health, metrics recovery, and normal query or response behavior.</span></li>
+          <li><strong>Document</strong><span>Record the cause, validation steps, and preventive improvements.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Validation examples</h2>
+
+        <h3>Application readiness</h3>
+        <pre><code>curl -I http://127.0.0.1:PORT/
+curl -k -I https://service-name</code></pre>
+
+        <h3>Container state</h3>
+        <pre><code>docker ps
+docker compose ps
+docker logs --tail 100 container-name</code></pre>
+
+        <h3>Host resources</h3>
+        <pre><code>uptime
+free -h
+df -h
+systemctl --failed</code></pre>
+
+        <h3>DNS path</h3>
+        <pre><code>dig service.dbservices
+dig @10.10.40.4 google.com
+dig @10.10.40.2 google.com</code></pre>
+
+        <h3>Network reachability</h3>
+        <pre><code>ping target-host
+nc -vz target-host PORT
+traceroute target-host</code></pre>
+      </section>
+
+      <section>
+        <h2>Dashboard evidence</h2>
+        <p>
+          The public portfolio includes sanitized views from Grafana, Uptime
+          Kuma, Technitium DNS, and LibreNMS. Hostnames, addresses, tokens, and
+          other sensitive operational details are removed or obscured before
+          publication.
+        </p>
+
+        <p>
+          The screenshots demonstrate operational use of the platforms rather
+          than acting only as a list of installed tools.
+        </p>
+      </section>
+
+      <section>
+        <h2>Measured results</h2>
+        <div class="incident-results">
+          <article><strong>20+</strong><span>monitored services</span></article>
+          <article><strong>2</strong><span>Linux infrastructure servers</span></article>
+          <article><strong>7+</strong><span>network segments</span></article>
+          <article><strong>6+</strong><span>monitoring components</span></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Operational improvements</h2>
+        <ul>
+          <li>Separated availability checks from resource and network telemetry.</li>
+          <li>Added host-level and container-level evidence to troubleshooting.</li>
+          <li>Centralized dashboards for faster cross-system correlation.</li>
+          <li>Used DNS analytics to distinguish resolver failures from application failures.</li>
+          <li>Documented repeatable validation commands for service recovery.</li>
+          <li>Published sanitized evidence without exposing production-sensitive details.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>A running container is not proof that an application is ready.</li>
+          <li>Endpoint monitoring and infrastructure metrics answer different questions.</li>
+          <li>DNS should be validated early in every service investigation.</li>
+          <li>Monitoring architecture should match the layers of the system being operated.</li>
+          <li>Dashboard screenshots require the same sanitization discipline as configuration files.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Skills demonstrated</h2>
+        <ul class="incident-skills">
+          <li>Infrastructure observability</li>
+          <li>Service availability monitoring</li>
+          <li>Prometheus metrics</li>
+          <li>Grafana dashboarding</li>
+          <li>Linux host monitoring</li>
+          <li>Docker telemetry</li>
+          <li>SNMP monitoring</li>
+          <li>DNS troubleshooting</li>
+          <li>Operational documentation</li>
+        </ul>
+      </section>
+
+      <nav class="incident-footer-nav" aria-label="Case study navigation">
+        <a href="vaultwarden-recovery.html">← Previous: Vaultwarden recovery</a>
+        <a href="index.html#case-studies">Back to portfolio →</a>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>
+HTML
+
+python3 <<'PY'
+from pathlib import Path
+import re
+
+path = Path("index.html")
+html = path.read_text(encoding="utf-8")
+
+pattern = re.compile(
+    r'(<article class="case">(?:(?!</article>).)*?'
+    r'<h3>Monitoring and observability</h3>'
+    r'(?:(?!</article>).)*?</article>)',
+    re.DOTALL,
+)
+
+match = pattern.search(html)
+
+if not match:
+    raise SystemExit("ERROR: Could not locate the Monitoring and observability card.")
+
+card = match.group(1)
+
+updated_card, count = re.subn(
+    r'<a class="read-link" href="[^"]*">.*?</a>',
+    '<a class="read-link" href="monitoring-platform.html">'
+    'Read full case study →</a>',
+    card,
+    count=1,
+    flags=re.DOTALL,
+)
+
+if count != 1:
+    raise SystemExit("ERROR: Could not locate the monitoring card link.")
+
+html = html[:match.start()] + updated_card + html[match.end():]
+path.write_text(html.rstrip() + "\n", encoding="utf-8")
+PY
+
+echo
+echo "Running validation..."
+
+if [[ -x tools/validate.sh ]]; then
+  tools/validate.sh
+else
+  git diff --check
+fi
+
+echo
+echo "Monitoring and observability case study added."
+echo
+git status --short
+echo
+git diff --stat -- index.html monitoring-platform.html
