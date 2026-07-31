@@ -3,47 +3,207 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vaultwarden Recovery and Hardening | Denny Brathwaite</title>
-  <link rel="stylesheet" href="../styles.css">
+  <title>Vaultwarden Recovery Incident Report | Denny Brathwaite</title>
+  <meta name="description" content="Incident report covering the diagnosis, recovery, validation, and hardening of a self-hosted Vaultwarden service.">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to incident report</a>
+
   <header class="site-header">
-    <nav class="nav container">
-      <a class="brand" href="../index.html"><span class="brand-mark">DB</span><span>Denny Brathwaite</span></a>
-      <a href="../index.html#projects">All case studies</a>
-    </nav>
+    <div class="container incident-nav">
+      <a class="incident-brand" href="index.html">
+        <span aria-hidden="true">DB</span>
+        <span>Denny Brathwaite</span>
+      </a>
+      <nav aria-label="Case study navigation">
+        <a href="index.html#projects">All case studies</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section class="case-hero">
-      <div class="container case-body">
-        <p class="eyebrow">Case study 03</p>
-        <h1>Vaultwarden Recovery and Hardening</h1>
-        <p class="hero-copy">Recovering a missing container safely while preserving encrypted vault data and improving the update workflow.</p>
-        <div class="case-meta"><span class="tag">Docker Compose</span><span class="tag">SQLite</span><span class="tag">Caddy</span><span class="tag">TLS</span><span class="tag">Bash</span><span class="tag">Argon2</span></div>
+
+  <main id="main">
+    <section class="incident-hero">
+      <div class="container incident-container">
+        <p class="incident-eyebrow">Case Study 03 · Incident Recovery</p>
+        <h1>Vaultwarden Recovery and Service Hardening</h1>
+        <p class="incident-lead">
+          Recovering a missing Vaultwarden container while protecting the
+          persistent SQLite database, validating service readiness, and
+          improving the update and rollback workflow.
+        </p>
+
+        <div class="incident-tags" aria-label="Technologies used">
+          <span>Linux</span>
+          <span>Docker Compose</span>
+          <span>SQLite</span>
+          <span>Vaultwarden</span>
+          <span>Caddy</span>
+          <span>Bash</span>
+          <span>Argon2</span>
+        </div>
       </div>
     </section>
-    <section class="section">
-      <article class="container case-body">
-        <h2>Incident</h2>
-<p>The Vaultwarden container was absent after an update attempt, while the image and Docker network still existed. The priority was to restore the service without risking the persistent password database.</p>
-<h2>Data validation</h2>
-<p>I located the Compose project and confirmed the bind mount:</p>
-<pre>/home/denalidennyb/vaultwarden/data → /data</pre>
-<p>Before deployment, I created a timestamped backup and ran SQLite integrity validation:</p>
-<pre>sudo cp -a data "data-backup-$(date +%Y%m%d-%H%M%S)"
-sudo sqlite3 data/db.sqlite3 'PRAGMA integrity_check;'</pre>
-<h2>Service recovery</h2>
-<p>I validated the Compose configuration, recreated the container, monitored application logs, confirmed Docker health, and tested the local HTTP endpoint before testing the Caddy hostname.</p>
-<h2>Security hardening</h2>
-<p>The update also replaced a plaintext administrative token with an Argon2 PHC hash. A Bash workflow was built to back up the Compose file, validate syntax, recreate the service, test HTTP readiness, detect plaintext-token warnings, and preserve rollback information.</p>
-<h2>Root-cause reasoning</h2>
-<p>An initial script treated Docker's delayed health transition as an application failure even though Rocket was already serving HTTP. The readiness test was redesigned to check the actual service endpoint for HTTP 200 instead of relying solely on the container health timestamp.</p>
-<h2>Result</h2>
-<p>Vaultwarden returned to service with an intact database, verified backups, secure administration, valid internal TLS, and a repeatable update procedure.</p>
 
-        <a class="back-link" href="../index.html#projects">← Back to portfolio</a>
-      </article>
-    </section>
+    <article class="container incident-container incident-report">
+      <section>
+        <h2>Executive summary</h2>
+        <p>
+          The Vaultwarden container was absent after an update attempt even
+          though its image, Docker network, Compose project, and persistent
+          data directory remained available. Because the service held
+          administrative credentials for the homelab, the priority was to
+          restore availability without damaging or replacing the encrypted
+          vault database.
+        </p>
+
+        <div class="incident-callout">
+          <strong>Outcome:</strong>
+          Vaultwarden returned to service with the existing database intact,
+          SQLite integrity verified, Docker health confirmed, and the local
+          application endpoint returning HTTP 200.
+        </div>
+      </section>
+
+      <section>
+        <h2>Environment</h2>
+        <dl class="incident-facts">
+          <div><dt>Host</dt><dd>DellServer</dd></div>
+          <div><dt>Deployment</dt><dd>Docker Compose</dd></div>
+          <div><dt>Compose path</dt><dd><code>/home/denalidennyb/vaultwarden/docker-compose.yml</code></dd></div>
+          <div><dt>Persistent data</dt><dd><code>/home/denalidennyb/vaultwarden/data</code></dd></div>
+          <div><dt>Database</dt><dd>SQLite</dd></div>
+          <div><dt>Published port</dt><dd><code>8087 → 80</code></dd></div>
+          <div><dt>Reverse proxy</dt><dd>Caddy</dd></div>
+          <div><dt>Recovered version</dt><dd>Vaultwarden 1.37.0</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>What broke and why it mattered</h2>
+        <p>
+          The application container was no longer present, so the Vaultwarden
+          web service could not accept requests. The persistent data directory
+          remained on disk, but recreating the container without first
+          validating that data could have increased the risk of compounding
+          the incident.
+        </p>
+        <ul>
+          <li>The password-management application was unavailable.</li>
+          <li>The reverse proxy had no healthy backend service to reach.</li>
+          <li>Administrative credentials were temporarily inaccessible.</li>
+          <li>Database integrity had to be established before redeployment.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recovery timeline</h2>
+        <ol class="incident-timeline">
+          <li><strong>Detection</strong><span>Confirmed that no Vaultwarden container existed.</span></li>
+          <li><strong>Configuration discovery</strong><span>Located the Compose project, image definition, port mapping, environment settings, and persistent bind mount.</span></li>
+          <li><strong>Data protection</strong><span>Created a timestamped copy of the complete Vaultwarden data directory before starting recovery work.</span></li>
+          <li><strong>Database validation</strong><span>Ran SQLite <code>PRAGMA integrity_check</code>; the database returned <code>ok</code>.</span></li>
+          <li><strong>Service recreation</strong><span>Recreated the application with <code>docker compose up -d</code>.</span></li>
+          <li><strong>Runtime validation</strong><span>Reviewed startup logs and confirmed that the container reached a healthy state.</span></li>
+          <li><strong>Endpoint validation</strong><span>Requested the local endpoint on port 8087 and received <code>HTTP/1.1 200 OK</code>.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Diagnosis and evidence</h2>
+
+        <h3>Container-state analysis</h3>
+        <p>
+          Docker inspection confirmed that the service container itself was
+          absent. This separated the application-runtime failure from the
+          persistent storage layer.
+        </p>
+
+        <h3>Compose and volume validation</h3>
+        <p>The Compose file showed that Vaultwarden stored application data through a bind mount:</p>
+        <pre><code>./data:/data</code></pre>
+
+        <h3>Backup before modification</h3>
+        <pre><code>cp -a data "data-backup-$(date +%Y%m%d-%H%M%S)"</code></pre>
+
+        <h3>SQLite integrity validation</h3>
+        <pre><code>sqlite3 data/db.sqlite3 'PRAGMA integrity_check;'</code></pre>
+        <p>The command returned:</p>
+        <pre><code>ok</code></pre>
+
+        <p>
+          This was the key recovery decision point. It provided evidence that
+          the persistent database was structurally sound and that service
+          recreation could proceed without restoring an older backup.
+        </p>
+      </section>
+
+      <section>
+        <h2>Root cause</h2>
+        <p>
+          The outage was caused by the application container being absent after
+          an update attempt, not by database corruption. A second issue was
+          identified in the recovery workflow: an early readiness check treated
+          Docker's delayed health transition as an application failure even
+          though the Rocket web server was already responding.
+        </p>
+      </section>
+
+      <section>
+        <h2>Recovery and verification</h2>
+        <pre><code>docker compose up -d
+docker compose ps
+curl -I http://127.0.0.1:8087/</code></pre>
+
+        <ul>
+          <li>The container reported <strong>running</strong> and <strong>healthy</strong>.</li>
+          <li>Startup logs identified Vaultwarden version 1.37.0.</li>
+          <li>The local endpoint returned <strong>HTTP 200 OK</strong>.</li>
+          <li>The existing SQLite database remained intact.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Preventive changes</h2>
+        <ul>
+          <li>Created a timestamped data backup before every update or recovery.</li>
+          <li>Added SQLite integrity validation before service recreation.</li>
+          <li>Changed readiness validation to test the actual HTTP endpoint.</li>
+          <li>Preserved rollback information and Compose backups.</li>
+          <li>Documented the complete recovery sequence.</li>
+          <li>Identified the plaintext administrative-token warning for Argon2 hardening.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Measured results</h2>
+        <div class="incident-results">
+          <article><strong>1</strong><span>service recovered</span></article>
+          <article><strong>0</strong><span>database integrity errors</span></article>
+          <article><strong>200</strong><span>HTTP readiness response</span></article>
+          <article><strong>1</strong><span>verified rollback backup</span></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skills demonstrated</h2>
+        <ul class="incident-skills">
+          <li>Linux administration</li>
+          <li>Docker Compose recovery</li>
+          <li>SQLite validation</li>
+          <li>Log analysis</li>
+          <li>Service readiness testing</li>
+          <li>Backup and rollback planning</li>
+          <li>Root-cause analysis</li>
+          <li>Operational documentation</li>
+        </ul>
+      </section>
+
+      <nav class="incident-footer-nav" aria-label="Incident report navigation">
+        <a href="index.html#projects">← Back to portfolio</a>
+        <a href="case-studies.html">Browse all case studies →</a>
+      </nav>
+    </article>
   </main>
 </body>
 </html>

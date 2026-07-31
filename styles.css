@@ -565,3 +565,207 @@ body{
   }
 }
 /* RECRUITER-TRANSLATION:END */
+
+/* VAULTWARDEN-INCIDENT:START */
+.incident-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.incident-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.incident-brand > span:first-child {
+  display: grid;
+  width: 2.2rem;
+  height: 2.2rem;
+  place-items: center;
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  border-radius: 0.55rem;
+  color: var(--accent);
+}
+
+.incident-container {
+  width: min(92%, 900px);
+  margin-inline: auto;
+}
+
+.incident-hero {
+  padding: clamp(3rem, 7vw, 5.5rem) 0 2.5rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.incident-eyebrow {
+  margin: 0 0 0.65rem;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.incident-lead {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.incident-tags,
+.incident-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  padding: 0;
+  list-style: none;
+}
+
+.incident-tags span,
+.incident-skills li {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.06);
+  color: var(--text);
+  font-size: 0.88rem;
+}
+
+.incident-report {
+  padding-block: 2.5rem 4rem;
+}
+
+.incident-report section {
+  margin-top: 2.5rem;
+}
+
+.incident-report h2 {
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.incident-callout {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 0.65rem 0.65rem 0;
+  background: rgba(45, 212, 191, 0.065);
+}
+
+.incident-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.incident-facts div {
+  padding: 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.incident-facts dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.incident-facts dd {
+  margin: 0.35rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.incident-timeline {
+  position: relative;
+  padding-left: 1.25rem;
+  list-style: none;
+}
+
+.incident-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.35rem;
+  bottom: 0.35rem;
+  left: 0.25rem;
+  width: 2px;
+  background: rgba(45, 212, 191, 0.35);
+}
+
+.incident-timeline li {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0 0 1.25rem 1rem;
+}
+
+.incident-timeline li::before {
+  content: "";
+  position: absolute;
+  top: 0.4rem;
+  left: -1.08rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.incident-timeline span {
+  color: var(--muted);
+}
+
+.incident-results {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.incident-results article {
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.75rem;
+  text-align: center;
+}
+
+.incident-results strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1.8rem;
+}
+
+.incident-results span {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.incident-footer-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+@media (max-width: 700px) {
+  .incident-facts,
+  .incident-results {
+    grid-template-columns: 1fr;
+  }
+
+  .incident-footer-nav {
+    flex-direction: column;
+  }
+}
+/* VAULTWARDEN-INCIDENT:END */
