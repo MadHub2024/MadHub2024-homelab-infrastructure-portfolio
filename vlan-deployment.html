@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multi-VLAN Network Segmentation Case Study | Denny Brathwaite</title>
+  <meta
+    name="description"
+    content="Case study documenting the design, deployment, security policy, and validation of a segmented TP-Link Omada network."
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to case study</a>
+
+  <header class="site-header">
+    <div class="container incident-nav">
+      <a class="incident-brand" href="index.html">
+        <span aria-hidden="true">DB</span>
+        <span>Denny Brathwaite</span>
+      </a>
+      <nav aria-label="Case study navigation">
+        <a href="index.html#case-studies">All case studies</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="incident-hero">
+      <div class="container incident-container">
+        <p class="incident-eyebrow">Case Study 01 · Network Architecture</p>
+        <h1>Enterprise-Style Multi-VLAN Network Segmentation</h1>
+        <p class="incident-lead">
+          Replacing a flat network with segmented security zones, centralized
+          DNS, explicit access-control policies, and controlled cross-VLAN
+          service discovery using TP-Link Omada infrastructure.
+        </p>
+
+        <div class="incident-tags" aria-label="Technologies used">
+          <span>TP-Link Omada</span>
+          <span>VLANs</span>
+          <span>ACLs</span>
+          <span>Layer 3 routing</span>
+          <span>mDNS</span>
+          <span>Technitium DNS</span>
+          <span>AdGuard Home</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="container incident-container incident-report">
+      <section>
+        <h2>Executive summary</h2>
+        <p>
+          The homelab evolved from a small collection of systems into a
+          production-style environment containing infrastructure servers,
+          workstations, IoT devices, media systems, printers, management
+          appliances, and guest clients. Keeping every device on one flat LAN
+          created unnecessary trust relationships and made policy enforcement
+          difficult.
+        </p>
+
+        <p>
+          The network was redesigned around separate VLANs, routed through the
+          TP-Link ER7412 and connected by an SX3008F 10 Gb backbone. Explicit
+          ACLs were used to permit required services while denying unnecessary
+          lateral access.
+        </p>
+
+        <div class="incident-callout">
+          <strong>Outcome:</strong>
+          More than seven logical network segments now separate management,
+          servers, workstations, IoT, media, printers, guests, and lab systems
+          while preserving required DNS, SSH, AirPrint, AirPlay, Hubitat, and
+          administrative workflows.
+        </div>
+      </section>
+
+      <section>
+        <h2>Environment</h2>
+        <dl class="incident-facts">
+          <div><dt>Internet edge</dt><dd>Comcast Business</dd></div>
+          <div><dt>Router</dt><dd>TP-Link ER7412</dd></div>
+          <div><dt>Backbone switch</dt><dd>TP-Link SX3008F 10 Gb</dd></div>
+          <div><dt>Controller</dt><dd>TP-Link OC300</dd></div>
+          <div><dt>Wireless</dt><dd>Multiple Omada access points</dd></div>
+          <div><dt>Primary DNS</dt><dd>Technitium DNS at <code>10.10.40.4</code></dd></div>
+          <div><dt>Filtering DNS</dt><dd>AdGuard Home at <code>10.10.40.2</code></dd></div>
+          <div><dt>Core hosts</dt><dd>Two Linux servers and one Linux workstation</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Problem</h2>
+        <ul>
+          <li>IoT and media devices had broader network visibility than required.</li>
+          <li>Management interfaces were not isolated from normal client traffic.</li>
+          <li>Printers and guest clients needed stricter access boundaries.</li>
+          <li>Infrastructure services required selective cross-VLAN communication.</li>
+          <li>AirPrint, AirPlay, HomeKit, and Hubitat depended on controlled mDNS behavior.</li>
+          <li>DNS needed to remain centralized across every routed segment.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Segmentation design</h2>
+        <dl class="incident-facts">
+          <div><dt>VLAN 10</dt><dd>Guest</dd></div>
+          <div><dt>VLAN 20</dt><dd>IoT and media</dd></div>
+          <div><dt>VLAN 30</dt><dd>Printers</dd></div>
+          <div><dt>VLAN 40</dt><dd>Servers</dd></div>
+          <div><dt>VLAN 50</dt><dd>Workstations</dd></div>
+          <div><dt>VLAN 60</dt><dd>Management</dd></div>
+          <div><dt>VLAN 70</dt><dd>Lab</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Design principles</h2>
+        <ol class="incident-timeline">
+          <li>
+            <strong>Separate by trust level</strong>
+            <span>
+              Infrastructure, management, user, IoT, printing, guest, and lab
+              systems were placed into distinct broadcast and policy domains.
+            </span>
+          </li>
+          <li>
+            <strong>Default deny between VLANs</strong>
+            <span>
+              Cross-VLAN access was blocked unless a documented business or
+              operational requirement justified an explicit rule.
+            </span>
+          </li>
+          <li>
+            <strong>Centralize DNS</strong>
+            <span>
+              Every VLAN was directed to Technitium DNS so internal names and
+              filtering followed one consistent path.
+            </span>
+          </li>
+          <li>
+            <strong>Allow narrow service paths</strong>
+            <span>
+              Rules were scoped by source, destination, protocol, and port
+              rather than granting broad subnet-to-subnet access.
+            </span>
+          </li>
+          <li>
+            <strong>Preserve service discovery intentionally</strong>
+            <span>
+              mDNS reflection was limited to required services such as
+              AirPrint, AirPlay, HomeKit, and Hubitat.
+            </span>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>ACL strategy</h2>
+
+        <h3>DNS access</h3>
+        <p>
+          Client VLANs were permitted to reach the designated DNS resolver on
+          TCP and UDP port 53. Direct use of alternate internal resolvers was
+          avoided so troubleshooting and policy enforcement remained consistent.
+        </p>
+
+        <h3>Administrative access</h3>
+        <p>
+          SSH and management interfaces were restricted to trusted workstation
+          and management sources rather than exposed across every VLAN.
+        </p>
+
+        <h3>IoT and media isolation</h3>
+        <p>
+          IoT and media devices were denied general access to management,
+          workstation, and server networks. Narrow exceptions were created for
+          services such as Hubitat, Homebridge, DNS, and required streaming or
+          discovery traffic.
+        </p>
+
+        <h3>Printer policy</h3>
+        <p>
+          Printers were isolated from sensitive systems while approved client
+          networks retained print access. Internet access was limited to what
+          the device required for updates and cloud functionality.
+        </p>
+
+        <h3>Guest policy</h3>
+        <p>
+          Guest clients received internet access without access to internal
+          infrastructure, management interfaces, or private application services.
+        </p>
+      </section>
+
+      <section>
+        <h2>mDNS and cross-VLAN discovery</h2>
+        <p>
+          Segmentation breaks multicast-based discovery by design. Required
+          services therefore had to be reintroduced intentionally rather than
+          by weakening the entire policy model.
+        </p>
+
+        <ul>
+          <li>AirPrint advertisements were made available to approved client VLANs.</li>
+          <li>AirPlay discovery was preserved for authorized media devices.</li>
+          <li>Hubitat and HomeKit communication paths were explicitly tested.</li>
+          <li>Bonjour forwarding rules were limited to the services that needed them.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Deployment timeline</h2>
+        <ol class="incident-timeline">
+          <li><strong>Inventory</strong><span>Mapped devices, services, trust levels, and required communication paths.</span></li>
+          <li><strong>Addressing plan</strong><span>Assigned dedicated IPv4 subnets to management, servers, workstations, IoT/media, printers, guests, and lab systems.</span></li>
+          <li><strong>VLAN creation</strong><span>Created the VLAN interfaces, DHCP scopes, and switch-port profiles in Omada.</span></li>
+          <li><strong>DNS alignment</strong><span>Configured client scopes to use Technitium DNS at <code>10.10.40.4</code>.</span></li>
+          <li><strong>ACL rollout</strong><span>Applied explicit permit rules followed by default-deny inter-VLAN controls.</span></li>
+          <li><strong>mDNS validation</strong><span>Tested AirPrint, AirPlay, Hubitat, HomeKit, and media discovery across approved segments.</span></li>
+          <li><strong>Operational validation</strong><span>Verified DNS, SSH, web applications, printing, internet access, and blocked lateral movement.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Validation and evidence</h2>
+
+        <h3>DNS resolution</h3>
+        <pre><code>dig google.com
+dig dashboard.dbservices
+dig portainer3.home</code></pre>
+
+        <h3>Path and reachability testing</h3>
+        <pre><code>ping 10.10.40.4
+traceroute 10.10.40.4
+nc -vz 10.10.40.4 53
+ssh user@10.10.40.2</code></pre>
+
+        <h3>Policy verification</h3>
+        <pre><code>nmap -Pn -p 22,53,80,443,161 target-host
+curl -I https://service-name</code></pre>
+
+        <p>
+          Tests were performed from multiple VLANs to confirm both permitted
+          workflows and expected denials. Successful application access alone
+          was not treated as proof that isolation was working.
+        </p>
+      </section>
+
+      <section>
+        <h2>Measured results</h2>
+        <div class="incident-results">
+          <article><strong>7+</strong><span>logical network segments</span></article>
+          <article><strong>10 Gb</strong><span>backbone switching</span></article>
+          <article><strong>3</strong><span>internal DNS zones</span></article>
+          <article><strong>2</strong><span>Linux infrastructure servers</span></article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Operational improvements</h2>
+        <ul>
+          <li>Reduced unnecessary lateral visibility between device classes.</li>
+          <li>Established a repeatable default-deny policy model.</li>
+          <li>Centralized DNS across all routed client networks.</li>
+          <li>Documented service-specific ACL and mDNS requirements.</li>
+          <li>Improved troubleshooting by separating routing, DNS, ACL, and application tests.</li>
+          <li>Created a design that can support future lab and business-service growth.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>Document required traffic before enabling default deny.</li>
+          <li>Validate DNS before assuming an application is unavailable.</li>
+          <li>Test allowed and denied paths from the actual source VLAN.</li>
+          <li>mDNS should be treated as an explicit exception, not a reason to flatten the network.</li>
+          <li>Small, source-specific rules are easier to audit than broad subnet permissions.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Skills demonstrated</h2>
+        <ul class="incident-skills">
+          <li>VLAN architecture</li>
+          <li>Layer 3 routing</li>
+          <li>ACL design</li>
+          <li>Network segmentation</li>
+          <li>mDNS and Bonjour</li>
+          <li>DNS integration</li>
+          <li>Network troubleshooting</li>
+          <li>Infrastructure documentation</li>
+        </ul>
+      </section>
+
+      <nav class="incident-footer-nav" aria-label="Case study navigation">
+        <a href="index.html#case-studies">← Back to portfolio</a>
+        <a href="dns-migration.html">Next: DNS migration →</a>
+      </nav>
+    </article>
+  </main>
+</body>
+</html>
