@@ -107,3 +107,88 @@ document.addEventListener('DOMContentLoaded', function () {
   if(modalImage) modalImage.addEventListener('click', closeModal);
 
 });
+
+/* IMAGE LIGHTBOX: START */
+(() => {
+  "use strict";
+
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImage = document.getElementById("imageLightboxImage");
+  const lightboxCaption = document.getElementById("imageLightboxCaption");
+  const closeButton = document.getElementById("imageLightboxClose");
+  const backdrop = document.getElementById("imageLightboxBackdrop");
+
+  if (!lightbox || !lightboxImage || !lightboxCaption || !closeButton || !backdrop) {
+    return;
+  }
+
+  let previouslyFocused = null;
+
+  const closeLightbox = () => {
+    if (lightbox.hidden) return;
+
+    lightbox.hidden = true;
+    lightboxImage.removeAttribute("src");
+    lightboxImage.alt = "";
+    lightboxCaption.textContent = "";
+    document.body.classList.remove("lightbox-open");
+
+    if (previouslyFocused instanceof HTMLElement) {
+      previouslyFocused.focus();
+    }
+
+    previouslyFocused = null;
+  };
+
+  const openLightbox = (trigger) => {
+    const thumbnail = trigger.querySelector("img");
+    const source =
+      trigger.dataset.lightboxSrc ||
+      trigger.getAttribute("href") ||
+      thumbnail?.currentSrc ||
+      thumbnail?.src;
+
+    if (!source) return;
+
+    previouslyFocused = document.activeElement;
+    lightboxImage.src = source;
+
+    const description =
+      thumbnail?.getAttribute("alt")?.trim() ||
+      trigger.getAttribute("aria-label")?.trim() ||
+      "";
+
+    lightboxImage.alt = description;
+    lightboxCaption.textContent = description;
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+    closeButton.focus();
+  };
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest(".lightbox-trigger");
+    if (!trigger) return;
+
+    event.preventDefault();
+    openLightbox(trigger);
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  backdrop.addEventListener("click", closeLightbox);
+
+  document.addEventListener("keydown", (event) => {
+    if (lightbox.hidden) return;
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeLightbox();
+      return;
+    }
+
+    if (event.key === "Tab") {
+      event.preventDefault();
+      closeButton.focus();
+    }
+  });
+})();
+/* IMAGE LIGHTBOX: END */
