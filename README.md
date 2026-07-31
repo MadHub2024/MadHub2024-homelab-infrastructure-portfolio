@@ -32,19 +32,19 @@ You can download or browse the archive from the repository above.
 
 ## Badges
 
-![Cloudflare Pages](https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange)
+<a href="certificates.html" title="Cloudflare Pages"><img alt="Cloudflare Pages" src="https://img.shields.io/badge/Hosted_on-Cloudflare_Cloud-orange" /></a>
 
-![Docker](https://img.shields.io/badge/Docker-20+-2496ED)
+<a href="certificates.html" title="Docker"><img alt="Docker" src="https://img.shields.io/badge/Docker-20+-2496ED" /></a>
 
-![TP-Link Omada](https://img.shields.io/badge/Network-TP--Link_Omada-00B8E6)
+<a href="certificates.html" title="TP-Link Omada"><img alt="TP-Link Omada" src="https://img.shields.io/badge/Network-TP--Link_Omada-00B8E6" /></a>
 
-![Technitium DNS](https://img.shields.io/badge/DNS-Technitium-success)
+<a href="certificates.html" title="Technitium DNS"><img alt="Technitium DNS" src="https://img.shields.io/badge/DNS-Technitium-success" /></a>
 
-![AdGuard Home](https://img.shields.io/badge/Filtering-AdGuard_Home-green)
+<a href="certificates.html" title="AdGuard Home"><img alt="AdGuard Home" src="https://img.shields.io/badge/Filtering-AdGuard_Home-green" /></a>
 
-![Vaultwarden](https://img.shields.io/badge/Password_Manager-Vaultwarden-red)
+<a href="certificates.html" title="Vaultwarden"><img alt="Vaultwarden" src="https://img.shields.io/badge/Password_Manager-Vaultwarden-red" /></a>
 
-![License-MIT](https://img.shields.io/badge/License-MIT-blue)
+<a href="certificates.html" title="License-MIT"><img alt="License-MIT" src="https://img.shields.io/badge/License-MIT-blue" /></a>
 
 
 Designed for deployment to Cloudflare Pages at:
@@ -55,9 +55,9 @@ Designed for deployment to Cloudflare Pages at:
 ## Certifications
 
 <a href="certificates.html" title="Google Cybersecurity Professional Certificate"><img alt="Google Cybersecurity Professional Certificate" src="https://img.shields.io/badge/Google_Cybersecurity-Professional_Certificate-blue?logo=google" /></a>
-![Google Cybersecurity Specialization](https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google)
-![Network Administration](https://img.shields.io/badge/Network_Administration-Completed-green)
-![Computer Maintenance](https://img.shields.io/badge/Computer_Maintenance-Completed-green)
+<a href="certificates.html" title="Google Cybersecurity Specialization"><img alt="Google Cybersecurity Specialization" src="https://img.shields.io/badge/Google_Cybersecurity-Specialization-blue?logo=google" /></a>
+<a href="certificates.html" title="Network Administration"><img alt="Network Administration" src="https://img.shields.io/badge/Network_Administration-Completed-green" /></a>
+<a href="certificates.html" title="Computer Maintenance"><img alt="Computer Maintenance" src="https://img.shields.io/badge/Computer_Maintenance-Completed-green" /></a>
 
 - Google Cybersecurity Professional Certificate (Coursera)
 - Google Cybersecurity Specialization
@@ -192,7 +192,7 @@ LibreNMS
         │   ├─�� Dispatcher
         │   ├── Redis
         │   └── MariaDB
-        ├── Home Assistant
+        ├─�� Home Assistant
         ├── Portainer
         ├── ESPHome
         ├── Matter Server
