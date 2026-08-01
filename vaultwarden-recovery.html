@@ -65,6 +65,41 @@
         </div>
       </section>
 
+      <!-- PROJECT-CONTEXT:START -->
+      <section>
+        <h2>Project metadata</h2>
+        <dl class="incident-facts">
+          <div><dt>Role</dt><dd>Sole Infrastructure Engineer</dd></div>
+          <div><dt>Environment</dt><dd>Self-hosted Docker infrastructure</dd></div>
+          <div><dt>Systems</dt><dd>Linux, Docker Compose, Vaultwarden, SQLite, Caddy</dd></div>
+          <div><dt>Project type</dt><dd>Incident recovery and service hardening</dd></div>
+          <div><dt>Duration</dt><dd>Same-day recovery and validation</dd></div>
+          <div><dt>Outcome</dt><dd>Service restored, database validated, and recovery workflow improved</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Business problem</h2>
+        <p>
+          Vaultwarden stored administrative credentials used across the
+          homelab. The missing application container made those credentials
+          temporarily unavailable, creating an operational dependency that had
+          to be restored without damaging the persistent encrypted database.
+        </p>
+      </section>
+
+      <section>
+        <h2>Success criteria</h2>
+        <ul>
+          <li>Protect the existing Vaultwarden data before making changes.</li>
+          <li>Verify that the SQLite database was structurally sound.</li>
+          <li>Recreate the application without replacing the persistent vault.</li>
+          <li>Confirm container health and an HTTP 200 application response.</li>
+          <li>Document a repeatable backup, recovery, and validation process.</li>
+        </ul>
+      </section>
+      <!-- PROJECT-CONTEXT:END -->
+
       <section>
         <h2>Environment</h2>
         <dl class="incident-facts">

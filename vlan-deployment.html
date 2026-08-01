@@ -76,6 +76,41 @@
         </div>
       </section>
 
+      <!-- PROJECT-CONTEXT:START -->
+      <section>
+        <h2>Project metadata</h2>
+        <dl class="incident-facts">
+          <div><dt>Role</dt><dd>Sole Network Administrator</dd></div>
+          <div><dt>Environment</dt><dd>Enterprise-style segmented homelab</dd></div>
+          <div><dt>Systems</dt><dd>TP-Link Omada, ER7412, SX3008F, OC300, Linux servers</dd></div>
+          <div><dt>Project type</dt><dd>Network design, segmentation, and access control</dd></div>
+          <div><dt>Duration</dt><dd>Multi-stage deployment and policy validation</dd></div>
+          <div><dt>Outcome</dt><dd>7+ segmented networks with controlled routing, ACLs, DNS, and mDNS</dd></div>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Business problem</h2>
+        <p>
+          Infrastructure, management systems, workstations, IoT devices,
+          media clients, printers, guests, and lab systems required different
+          trust levels. The network needed stronger isolation without breaking
+          DNS, administration, printing, media discovery, or automation.
+        </p>
+      </section>
+
+      <section>
+        <h2>Success criteria</h2>
+        <ul>
+          <li>Separate device classes into dedicated VLANs and subnets.</li>
+          <li>Use default-deny inter-VLAN policy with narrow documented exceptions.</li>
+          <li>Keep centralized DNS available from every approved client network.</li>
+          <li>Preserve required AirPrint, AirPlay, HomeKit, Hubitat, and management workflows.</li>
+          <li>Verify both allowed traffic and expected denials from the actual source VLAN.</li>
+        </ul>
+      </section>
+      <!-- PROJECT-CONTEXT:END -->
+
       <section>
         <h2>Environment</h2>
         <dl class="incident-facts">
