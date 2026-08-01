@@ -198,6 +198,27 @@ dig @10.10.40.2 google.com</code></pre>
           <li>Reduced the risk of clients bypassing the intended DNS path.</li>
         </ul>
       </section>
+      <!-- REFLECTION-SECTION:START -->
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>Separating authoritative internal DNS from filtering made failures easier to isolate.</li>
+          <li>Missing authoritative zones can present as broad application failures even when routing and service health are normal.</li>
+          <li>Resolver migrations should be validated one layer at a time using direct queries against each DNS server.</li>
+          <li>Client and container resolver settings must be audited together to prevent bypassing the intended DNS path.</li>
+        </ul>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would build and validate all internal zones before changing client
+          DHCP settings, then migrate one VLAN at a time with a documented
+          rollback plan. I would also automate zone exports, resolver health
+          checks, and configuration backups before future DNS changes.
+        </p>
+      </section>
+      <!-- REFLECTION-SECTION:END -->
+
+
 
       <section>
         <h2>Skills demonstrated</h2>

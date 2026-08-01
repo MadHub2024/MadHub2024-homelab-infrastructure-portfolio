@@ -184,6 +184,27 @@ curl -I http://127.0.0.1:8087/</code></pre>
           <article><strong>1</strong><span>verified rollback backup</span></article>
         </div>
       </section>
+      <!-- REFLECTION-SECTION:START -->
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>Persistent application data must be validated independently from container state.</li>
+          <li>Creating a backup before recovery changes reduced the risk of turning an outage into data loss.</li>
+          <li>A running container is not sufficient evidence of application readiness; endpoint and database checks are both required.</li>
+          <li>Recovery procedures are stronger when rollback points, validation commands, and expected results are documented in advance.</li>
+        </ul>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would automate pre-upgrade backups, SQLite integrity checks, and
+          post-deployment HTTP validation in a repeatable maintenance script.
+          I would also store the administrative token as an Argon2 hash from
+          the beginning and add a monitored backup-verification schedule.
+        </p>
+      </section>
+      <!-- REFLECTION-SECTION:END -->
+
+
 
       <section>
         <h2>Skills demonstrated</h2>

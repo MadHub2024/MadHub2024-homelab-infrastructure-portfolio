@@ -281,6 +281,27 @@ curl -I https://service-name</code></pre>
           <li>Small, source-specific rules are easier to audit than broad subnet permissions.</li>
         </ul>
       </section>
+      <!-- REFLECTION-SECTION:START -->
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>Default-deny segmentation works best when required traffic flows are documented before ACL deployment.</li>
+          <li>mDNS and Bonjour must be treated as intentional exceptions rather than reasons to weaken segmentation.</li>
+          <li>Testing from the actual source VLAN is essential because local tests can hide routing or ACL failures.</li>
+          <li>DNS, routing, ACLs, and application readiness should be validated as separate layers.</li>
+        </ul>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would stage the VLAN rollout in smaller maintenance windows,
+          maintain a formal source-to-destination traffic matrix, and validate
+          each permit and deny rule with scripted tests. I would also export
+          controller configuration before every major ACL or VLAN change.
+        </p>
+      </section>
+      <!-- REFLECTION-SECTION:END -->
+
+
 
       <section>
         <h2>Skills demonstrated</h2>

@@ -289,6 +289,27 @@ traceroute target-host</code></pre>
           <li>Dashboard screenshots require the same sanitization discipline as configuration files.</li>
         </ul>
       </section>
+      <!-- REFLECTION-SECTION:START -->
+      <section>
+        <h2>Lessons learned</h2>
+        <ul>
+          <li>No single monitoring tool provides complete visibility across applications, hosts, containers, DNS, and network devices.</li>
+          <li>Availability monitoring and infrastructure telemetry answer different operational questions and should be correlated.</li>
+          <li>Dashboards are most useful when they prioritize actionable signals instead of every available metric.</li>
+          <li>Monitoring evidence should be paired with repeatable validation commands and documented response procedures.</li>
+        </ul>
+
+        <h2>What I would do differently</h2>
+        <p>
+          I would define service-level indicators and alert thresholds before
+          building dashboards, then centralize notifications and logs earlier
+          in the deployment. I would also automate configuration backups and
+          create runbooks that map each alert to specific diagnostic steps.
+        </p>
+      </section>
+      <!-- REFLECTION-SECTION:END -->
+
+
 
       <section>
         <h2>Skills demonstrated</h2>
