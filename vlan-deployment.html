@@ -274,17 +274,6 @@ curl -I https://service-name</code></pre>
       <section>
         <h2>Lessons learned</h2>
         <ul>
-          <li>Document required traffic before enabling default deny.</li>
-          <li>Validate DNS before assuming an application is unavailable.</li>
-          <li>Test allowed and denied paths from the actual source VLAN.</li>
-          <li>mDNS should be treated as an explicit exception, not a reason to flatten the network.</li>
-          <li>Small, source-specific rules are easier to audit than broad subnet permissions.</li>
-        </ul>
-      </section>
-      <!-- REFLECTION-SECTION:START -->
-      <section>
-        <h2>Lessons learned</h2>
-        <ul>
           <li>Default-deny segmentation works best when required traffic flows are documented before ACL deployment.</li>
           <li>mDNS and Bonjour must be treated as intentional exceptions rather than reasons to weaken segmentation.</li>
           <li>Testing from the actual source VLAN is essential because local tests can hide routing or ACL failures.</li>
